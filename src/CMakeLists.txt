@@ -7,10 +7,9 @@ find_package(MPI REQUIRED)
 
 set (NETCDF_F90 "YES")
 find_package (NetCDF REQUIRED)
-#target_link_libraries (uses_everthing ${NETCDF_LIBRARIES})
 
 add_definitions(-Duse_netCDF)
-include_directories(${MPI_F90_INCLUDE_PATH} "/usr/include")
+include_directories(${MPI_F90_INCLUDE_PATH} /usr/include MOM6/config_src/dynamic MOM6/src/framework ${CMAKE_BINARY_DIR}/FMS ${CMAKE_BINARY_DIR}/MOM6)
 
 # make sure that the default is a RELEASE
 if (NOT CMAKE_BUILD_TYPE)
@@ -28,3 +27,4 @@ endif (Fortran_COMPILER_NAME MATCHES "gfortran")
 
 add_subdirectory(FMS)
 add_subdirectory(MOM6)
+add_subdirectory(SIS2)
