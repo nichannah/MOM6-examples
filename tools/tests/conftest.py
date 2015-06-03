@@ -11,19 +11,20 @@ def pytest_addoption(parser):
                              pass to test functions. Also you must use the '='
                              sign otherwise py.test gets confused, e.g:
                              $ py.test --exps=ice_ocean_SIS2/Baltic/,ocean_only/benchmark""")
-    parser.addoption('--full', action='store_true', default=False,
-                     help="""Run on all experiments/test cases. By default
-                             tests are run on a 'fast' subset of experiments.
-                             Note that this overrides the --exps option.""")
+    parser.addoption('--slow', action='store_true', default=False,
+                     help="""Run the maximum number of tests. For example
+                             all build and experiment combinations.""")
 
 def pytest_generate_tests(metafunc):
     """
-    Parameterize tests. Presently handles those that have 'exp' as an argument.
+    Parameterize tests.
     """
-    if 'exp' in metafunc.fixturenames:
-        if metafunc.config.option.full:
+    if 'exp' in metafunc.fixturenames or 'prerun_exp' in metafunc.fixturenames:
+        if metafunc.config.option.slow:
             # Run tests on all experiments.
-            exps = experiment_dict.values()
+            #exps = experiment_dict.values()
+            exps = [experiment_dict['ice_ocean_SIS2/Baltic'],
+                    experiment_dict['ocean_only/global_ALE/z']]
         elif metafunc.config.option.exps is not None:
             # Only run on the given experiments.
             exps = []
@@ -34,13 +35,48 @@ def pytest_generate_tests(metafunc):
         else:
             # Default is to run on a fast subset of the experiments.
             exps = [experiment_dict['ice_ocean_SIS2/Baltic']]
-
         metafunc.parametrize('exp', exps, indirect=True)
+        metafunc.parametrize('prerun_exp', exps, indirect=True)
+
+    if 'model' in metafunc.fixturenames:
+        if metafunc.config.option.slow:
+            models = ['ocean_only', 'ice_ocean_SIS2']
+        else:
+            # Default is to run on a fast subset
+            models = ['ocean_only']
+        metafunc.parametrize('model', models, indirect=True)
+
+    if 'build' in metafunc.fixturenames:
+        builds = ['debug']
+        metafunc.parametrize('build', builds, indirect=True)
+
+    if 'compiler' in metafunc.fixturenames:
+        compilers = ['gnu']
+        metafunc.parametrize('compiler', compilers, indirect=True)
+
+@pytest.fixture
+def model(request):
+    return request.param
+
+@pytest.fixture
+def build(request):
+    return request.param
+
+@pytest.fixture
+def compiler(request):
+    return request.param
 
 @pytest.fixture
 def exp(request):
     """
-    Called before each test, use this to dump all the experiment data.
+    Fixture for tests that want an experiment that has not been run.
+    """
+    return request.param
+
+@pytest.fixture
+def prerun_exp(request):
+    """
+    Fixture for tests that want an experiment that has already been run.
     """
     exp = request.param
 

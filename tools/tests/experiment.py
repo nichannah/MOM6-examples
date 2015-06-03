@@ -66,14 +66,13 @@ def exp_id_from_path(path):
 
 class Experiment:
 
-    def __init__(self, id, platform='gnu'):
+    def __init__(self, id):
         """
         Python representation of an experiment/test case.
 
         The id is a string of the form <model>/<exp>/<variation>.
         """
 
-        self.platform = platform
         id = id.split('/')
         self.model = id[0]
         self.name = id[1]
@@ -85,10 +84,6 @@ class Experiment:
         self.path = os.path.join(_mom_examples_path, self.model, self.name)
         if self.variation is not None:
             self.path = os.path.join(self.path, self.variation)
-
-        # Path to executable, may not exist yet.
-        rel_path = 'build/{}/{}/repro/MOM6'.format(self.platform, self.model)
-        self.exec_path = os.path.join(_mom_examples_path, rel_path)
 
         # Lists of available and unfinished diagnostics.
         self.available_diags = self._parse_available_diags()
@@ -128,49 +123,52 @@ class Experiment:
                 diags.extend([Diagnostic(m, d, self.path) for m, d in matches])
         return diags
 
-    def force_build(self):
+    def get_model(self):
         """
-        Do a clean build of the configuration.
+        Return model used to run this experiment.
         """
-        raise NotImplementedError
+        return self.model
 
-    def build(self):
+    def get_path(self):
         """
-        Build the configuration for this experiment.
+        Return path to this experiment.
         """
-        raise NotImplementedError
+        return self.path
 
-    def run(self):
+    def run(self, build='repro', compiler='gnu'):
         """
         Run the experiment if it hasn't already.
         """
-        if not self.has_run:
-            self.force_run()
+        if self.has_run:
+            return 0
+        else:
+            ret, _, _ = self.force_run(build, compiler)
+            return ret
 
-    def force_run(self):
+    def force_run(self, build='repro', compiler='gnu', fake_it=False):
         """
-        Run the experiment.
+        Run the experiment, return error code and the command used.
         """
-
-        assert(os.path.exists(self.exec_path))
+        rel_path = 'build/{}/{}/{}/MOM6'.format(compiler, self.model, build)
+        exec_path = os.path.join(_mom_examples_path, rel_path)
+        assert(os.path.exists(exec_path))
 
         ret = 0
         saved_path = os.getcwd()
-
         os.chdir(self.path)
         try:
-            exe = rc.get_exec_prefix(self.model, self.name, self.variation) + \
-                  ' ' + self.exec_path
-            print('Executing ' + exe)
-            output = sp.check_output(shlex.split(exe), stderr=sp.STDOUT)
-            self.has_run = True
+            prefix = rc.get_exec_prefix(self.model, self.name, self.variation)
+            cmd = prefix + ' ' + exec_path
+            if not fake_it:
+                print('Executing ' + cmd)
+                output = sp.check_output(shlex.split(cmd), stderr=sp.STDOUT)
+                self.has_run = True
         except sp.CalledProcessError as e:
             ret = e.returncode
             print(e.output, file=sys.stderr)
         finally:
             os.chdir(saved_path)
-
-        return ret
+        return ret, prefix, exec_path
 
     def get_available_diags(self):
         """

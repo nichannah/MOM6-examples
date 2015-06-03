@@ -11,19 +11,19 @@ import pytest
 @pytest.mark.usefixtures('prepare_to_test')
 class TestDiagnosticOutput:
 
-    def test_coverage(self, exp):
+    def test_coverage(self, prerun_exp):
         """
         Test that all available diagnostics can be dumped.
         """
         # Check that none of the experiments unfinished diags have been
         # implemented, if so the unifinished_diags list should be updated.
-        assert(not any([os.path.exists(d.output) for d in exp.get_unfinished_diags()]))
+        assert(not any([os.path.exists(d.output) for d in prerun_exp.get_unfinished_diags()]))
 
         # Check that diags that should have been written out are.
-        assert(len(exp.get_available_diags()) > 0)
-        assert(all([os.path.exists(d.output) for d in exp.get_available_diags()]))
+        assert(len(prerun_exp.get_available_diags()) > 0)
+        assert(all([os.path.exists(d.output) for d in prerun_exp.get_available_diags()]))
 
-    def test_valid(self, exp):
+    def test_valid(self, prerun_exp):
         """
         Check that that all output diagnostics are valid.
 
@@ -32,7 +32,7 @@ class TestDiagnosticOutput:
             - the variable contains data
             - that data doesn't contain NaNs.
         """
-        for d in exp.get_available_diags():
+        for d in prerun_exp.get_available_diags():
             with nc.netcdf_file(d.output) as f:
                 assert(d.name in f.variables.keys())
                 data = f.variables[d.name][:].copy()
@@ -42,7 +42,7 @@ class TestDiagnosticOutput:
                     assert(not data.mask.all())
                 assert(not np.isnan(np.sum(data)))
 
-    def test_checksums(self, exp):
+    def test_checksums(self, prerun_exp):
         """
         Test that checksums of diagnostic output are the same
         as a baseline.
@@ -50,10 +50,10 @@ class TestDiagnosticOutput:
         Note that diagnostic output needs to be in netCDF3 format for this
         checksum to be reproducible.
         """
-        checksum_file = os.path.join(exp.path, 'diag_checksums.txt')
-        tmp_file = os.path.join(exp.path, 'tmp_diag_checksums.txt')
+        checksum_file = os.path.join(prerun_exp.path, 'diag_checksums.txt')
+        tmp_file = os.path.join(prerun_exp.path, 'tmp_diag_checksums.txt')
         new_checksums = ''
-        for d in exp.get_available_diags():
+        for d in prerun_exp.get_available_diags():
             with open(d.output, 'rb') as f:
                 checksum = hashlib.md5(f.read()).hexdigest()
             new_checksums += '{}:{}\n'.format(os.path.basename(d.output),
