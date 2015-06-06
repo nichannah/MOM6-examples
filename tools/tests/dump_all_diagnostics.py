@@ -37,7 +37,8 @@ def dump_diags(exp, diags):
             n = d.name
             print('"{}", "{}", "{}", "{}_{}", "all",' \
                   '.false., "none", 2'.format(m, n, n, m, n), file=f)
-    return exp.force_run()
+    ret, _, _ = exp.force_run()
+    return ret
 
 def main():
 

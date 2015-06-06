@@ -57,7 +57,6 @@ class Model:
         os.chdir(shared_dir)
         command = _build_fms_script.format(build=build_kind,
                                            compiler=compiler)
-        print(shlex.split(command))
         try:
             output = sp.check_output(command, stderr=sp.STDOUT, shell=True)
         except sp.CalledProcessError as e:
@@ -86,5 +85,5 @@ class Model:
             print(e.output, file=sys.stderr)
         finally:
             os.chdir(saved_path)
-        
+
         return ret

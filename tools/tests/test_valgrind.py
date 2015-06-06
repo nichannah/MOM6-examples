@@ -13,8 +13,10 @@ class TestValgrind:
 
     def test_run(self, exp):
         """
-        Run experiments 
+        Run experiments
         """
+
+        print('valgrind running with exp: {}'.format(exp.name))
         build = 'debug'
         compiler = 'gnu'
         # Build the model
@@ -35,10 +37,10 @@ class TestValgrind:
             output = sp.check_output(shlex.split(cmd), stderr=sp.STDOUT)
         except sp.CalledProcessError as e:
             ret = e.returncode
-            print(e.output, file=sys.stderr)
         finally:
+            with open('valgrind.out', 'r+') as f:
+                print(e.output, file=f)
             os.chdir(saved_path)
         assert(ret == 0)
 
-        # Check valgrind output
-
+        # Do checks on valgrind output.

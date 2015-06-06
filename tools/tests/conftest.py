@@ -19,12 +19,12 @@ def pytest_generate_tests(metafunc):
     """
     Parameterize tests.
     """
-    if 'exp' in metafunc.fixturenames or 'prerun_exp' in metafunc.fixturenames:
+    def select_exps(metafunc):
         if metafunc.config.option.slow:
             # Run tests on all experiments.
             #exps = experiment_dict.values()
             exps = [experiment_dict['ice_ocean_SIS2/Baltic'],
-                    experiment_dict['ocean_only/global_ALE/z']]
+                    experiment_dict['ocean_only/benchmark']]
         elif metafunc.config.option.exps is not None:
             # Only run on the given experiments.
             exps = []
@@ -35,7 +35,14 @@ def pytest_generate_tests(metafunc):
         else:
             # Default is to run on a fast subset of the experiments.
             exps = [experiment_dict['ice_ocean_SIS2/Baltic']]
+        return exps
+
+    if 'exp' in metafunc.fixturenames:
+        exps = select_exps(metafunc)
         metafunc.parametrize('exp', exps, indirect=True)
+
+    if 'prerun_exp' in metafunc.fixturenames:
+        exps = select_exps(metafunc)
         metafunc.parametrize('prerun_exp', exps, indirect=True)
 
     if 'model' in metafunc.fixturenames:
@@ -69,14 +76,14 @@ def compiler(request):
 @pytest.fixture
 def exp(request):
     """
-    Fixture for tests that want an experiment that has not been run.
+    Fixture for tests than need an experiment which has not been run.
     """
     return request.param
 
 @pytest.fixture
 def prerun_exp(request):
     """
-    Fixture for tests that want an experiment that has already been run.
+    Fixture for tests that need an experiment which has not been run.
     """
     exp = request.param
 
