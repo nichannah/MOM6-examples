@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(MOM6)
 enable_language(Fortran)
 enable_language(C)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/../tools/cmake/Modules/")
 
 find_package(MPI REQUIRED)
 set (NETCDF_F90 "YES")
