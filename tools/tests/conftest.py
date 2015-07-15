@@ -54,11 +54,11 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize('model', models, indirect=True)
 
     if 'build' in metafunc.fixturenames:
-        builds = ['debug']
+        builds = ['debug', 'repro']
         metafunc.parametrize('build', builds, indirect=True)
 
     if 'compiler' in metafunc.fixturenames:
-        compilers = ['gnu']
+        compilers = ['gnu', 'intel']
         metafunc.parametrize('compiler', compilers, indirect=True)
 
 @pytest.fixture
