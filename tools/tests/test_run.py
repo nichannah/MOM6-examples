@@ -11,7 +11,7 @@ class TestRun:
 
     def test_run(self, exp, build, compiler):
         """
-        Run experiments 
+        Run experiments
         """
         model = exp.get_model()
         m = Model(model)
