@@ -11,28 +11,29 @@ _build_dir = os.path.normpath(os.path.join(_file_dir, '../../build'))
 
 # FIXME: replace these with cmake
 _build_fms_script = """
-../../../bin/list_paths ../../../../src/FMS &&
+../../../../mkmf/bin/list_paths ../../../../src/FMS &&
 mv path_names path_names.orig; egrep -v "coupler" path_names.orig > path_names &&
-../../../bin/mkmf -t ../../../site/ubuntu/{compiler}.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
+../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
 make NETCDF=3 {build}=1 libfms.a -j
 """
 
 _build_ocean_script = """
-../../../bin/list_paths ./ ../../../../src/MOM6/{{config_src/dynamic,config_src/solo_driver,src/{{*,*/*}}}}/
-../../../bin/mkmf -t ../../../site/ubuntu/{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
+pwd &&
+../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/{{config_src/dynamic,config_src/solo_driver,src/{{*,*/*}}}}/
+../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
 make NETCDF=3 {build}=1 MOM6 -j
 """
 
 _build_ocean_ice_script = """
-../../../../build/bin/list_paths ./ ../../../../src/MOM6/config_src/{{dynamic,coupled_driver}} ../../../../src/MOM6/src/{{*,*/*}}/ ../../../../src/{{atmos_null,coupler,land_null,ice_param,SIS2,FMS/coupler,FMS/include}} &&
-../../../../build/bin/mkmf -t ../../../../build/site/ubuntu/{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c '-Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO' path_names &&
+pwd &&
+../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/config_src/{{dynamic,coupled_driver}} ../../../../src/MOM6/src/{{*,*/*}}/ ../../../../src/{{atmos_null,coupler,land_null,ice_param,SIS2,FMS/coupler,FMS/include}} &&
+../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c '-Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO' path_names &&
 make NETCDF=3 {build}=1 MOM6 -j
 """
 
 def mkdir_p(path):
     """Create a new directory; ignore if it already exists."""
     import errno
-
     try:
         os.makedirs(path)
     except OSError as exc:
@@ -43,6 +44,9 @@ class Model:
 
     def __init__(self, name):
         self.name = name
+        self.site = 'linux'
+        if 'raijin' in sp.check_output(['uname', '-a']):
+            self.site = 'raijin'
 
     def build(self, build_kind, compiler):
         """
@@ -52,10 +56,10 @@ class Model:
         ret = 0
 
         # Build FMS
-        shared_dir = os.path.join(_build_dir, compiler, 'shared', build_kind) 
+        shared_dir = os.path.join(_build_dir, compiler, 'shared', build_kind)
         mkdir_p(shared_dir)
         os.chdir(shared_dir)
-        command = _build_fms_script.format(build=build_kind,
+        command = _build_fms_script.format(site=self.site, build=build_kind,
                                            compiler=compiler)
         try:
             output = sp.check_output(command, stderr=sp.STDOUT, shell=True)
@@ -69,14 +73,14 @@ class Model:
             return ret
 
         # Build either ocean_only or ice and ocean.
-        model_dir = os.path.join(_build_dir, compiler, self.name, build_kind) 
+        model_dir = os.path.join(_build_dir, compiler, self.name, build_kind)
         mkdir_p(model_dir)
         os.chdir(model_dir)
         if self.name == 'ocean_only':
-            command = _build_ocean_script.format(build=build_kind,
+            command = _build_ocean_script.format(site=self.site, build=build_kind,
                                                  compiler=compiler)
         else:
-            command = _build_ocean_ice_script.format(build=build_kind,
+            command = _build_ocean_ice_script.format(site=self.site, build=build_kind,
                                                      compiler=compiler)
         try:
             output = sp.check_output(command, stderr=sp.STDOUT, shell=True)

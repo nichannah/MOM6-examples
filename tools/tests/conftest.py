@@ -53,7 +53,7 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize('build', builds, indirect=True)
 
     if 'compiler' in metafunc.fixturenames:
-        compilers = ['gnu', 'intel']
+        compilers = ['gnu']
         metafunc.parametrize('compiler', compilers, indirect=True)
 
 @pytest.fixture
