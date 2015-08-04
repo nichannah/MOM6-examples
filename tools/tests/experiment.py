@@ -8,6 +8,7 @@ import shlex
 import string
 import subprocess as sp
 import run_config as rc
+from model import mkdir_p
 
 # Only support Python version >= 2.7
 assert(not(sys.version_info[0] == 2) or sys.version_info[1] >= 7)
@@ -156,6 +157,7 @@ class Experiment:
         ret = 0
         saved_path = os.getcwd()
         os.chdir(self.path)
+        mkdir_p('RESTART')
         try:
             prefix = rc.get_exec_prefix(self.model, self.name, self.variation)
             cmd = prefix + ' ' + exec_path
