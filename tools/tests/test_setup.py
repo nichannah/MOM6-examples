@@ -27,6 +27,12 @@ class TestSetup:
         sp.check_call(shlex.split('git submodule init'))
         sp.check_call(shlex.split('git submodule update --recursive'))
 
+        # Setup CVmix
+        os.chdir('src/MOM6')
+        sp.check_call(shlex.split('git submodule init'))
+        sp.check_call(shlex.split('git submodule update'))
+        os.chdir(root)
+
         # Get mkmf - use nicjhan fork because it has the raijin templates.
         sp.check_call(shlex.split('git clone https://github.com/nicjhan/mkmf.git'))
 
