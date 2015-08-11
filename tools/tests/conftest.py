@@ -32,8 +32,7 @@ def pytest_generate_tests(metafunc):
         else:
             # Run tests on all experiments.
             #exps = experiment_dict.values()
-            exps = [experiment_dict['ice_ocean_SIS2/Baltic'],
-                    experiment_dict['ocean_only/benchmark']]
+            exps = [experiment_dict['ocean_only/benchmark']]
         return exps
 
     if 'exp' in metafunc.fixturenames:
@@ -45,7 +44,7 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize('prerun_exp', exps, indirect=True)
 
     if 'model' in metafunc.fixturenames:
-        models = ['ocean_only', 'ice_ocean_SIS2']
+        models = ['ocean_only']
         metafunc.parametrize('model', models, indirect=True)
 
     if 'build' in metafunc.fixturenames:
