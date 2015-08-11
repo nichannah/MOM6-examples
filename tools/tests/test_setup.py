@@ -27,8 +27,8 @@ class TestSetup:
         sp.check_call(shlex.split('git submodule init'))
         sp.check_call(shlex.split('git submodule update'))
 
-        # Get mkmf
-        sp.check_call(shlex.split('git clone https://github.com/NOAA-GFDL/mkmf.git'))
+        # Get mkmf - use nicjhan fork because it has the raijin templates.
+        sp.check_call(shlex.split('git clone https://github.com/nicjhan/mkmf.git'))
 
     def test_download_ocean_ice(self):
         """
