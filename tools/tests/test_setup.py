@@ -25,7 +25,7 @@ class TestSetup:
         # Get all submodules
         assert(os.path.exists('.git'))
         sp.check_call(shlex.split('git submodule init'))
-        sp.check_call(shlex.split('git submodule update'))
+        sp.check_call(shlex.split('git submodule update --recursive'))
 
         # Get mkmf - use nicjhan fork because it has the raijin templates.
         sp.check_call(shlex.split('git clone https://github.com/nicjhan/mkmf.git'))
