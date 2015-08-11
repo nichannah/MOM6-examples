@@ -8,7 +8,8 @@ from experiment import experiment_dict, exp_id_from_path
 def pytest_addoption(parser):
     parser.addoption('--exps', default=None,
                      help="""comma-separated no spaces list of experiments to
-                             pass to test functions. Also you must use the '='
+                             pass to test functions. Experiments are described
+                             in the form <model_name>/<exp_name>. Also you must use the '='
                              sign otherwise py.test gets confused, e.g:
                              $ py.test --exps=ice_ocean_SIS2/Baltic,ocean_only/benchmark""")
     parser.addoption('--fast', action='store_true', default=False,
@@ -25,21 +26,13 @@ def pytest_generate_tests(metafunc):
         elif metafunc.config.option.exps is not None:
             # Only run on the given experiments.
             exps = []
-            for p in metafunc.config.option.exps.split(','):
-                print(p)
-                if not os.path.exists(p):
-                    # If the experiment does not exist assume that it is a test
-                    # case name in either ocean_only or ice_ocean_SIS2 directories
-                    if os.path.exists(os.path.join('ocean_only', p)):
-                        p = os.path.join('ocean_only', p)
-                        print(p)
-                    elif os.path.exists(os.path.join('ice_ocean_SIS2', p)):
-                        p = os.path.join('ice_ocean_SIS2', p)
-
-                 print(p)
-                assert(os.path.exists(p))
-                id = exp_id_from_path(os.path.abspath(p))
-                exps.append(experiment_dict[id])
+            for e in metafunc.config.option.exps.split(','):
+                if not experiment_dict.has_key(e):
+                    if experiment_dict.has_key('ocean_only/' + e):
+                        e = 'ocean_only/' + e
+                    elif experiment_dict.has_key('ice_ocean_SIS2/' + p):
+                        e = 'ice_ocean_SIS2/' + e
+                exps.append(experiment_dict[e])
         else:
             # Run tests on all experiments.
             #exps = experiment_dict.values()
