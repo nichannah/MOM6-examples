@@ -10,7 +10,7 @@ def pytest_addoption(parser):
                      help="""comma-separated no spaces list of experiments to
                              pass to test functions. Also you must use the '='
                              sign otherwise py.test gets confused, e.g:
-                             $ py.test --exps=ice_ocean_SIS2/Baltic/,ocean_only/benchmark""")
+                             $ py.test --exps=ice_ocean_SIS2/Baltic,ocean_only/benchmark""")
     parser.addoption('--fast', action='store_true', default=False,
                      help="""Run a fast subset of tests.""")
 
@@ -26,6 +26,14 @@ def pytest_generate_tests(metafunc):
             # Only run on the given experiments.
             exps = []
             for p in metafunc.config.option.exps.split(','):
+                if not os.path.exists(p):
+                    # If the experiment does not exist assume that it is a test
+                    # case name in either ocean_only or ice_ocean_SIS2 directories
+                    if os.path.exists(os.path.join('ocean_only', p)):
+                        p = os.path.join('ocean_only', p)
+                    elif os.path.exists(os.path.join('ice_icean_SIS2', p)):
+                        p = os.path.join('ice_icean_SIS2', p)
+
                 assert(os.path.exists(p))
                 id = exp_id_from_path(os.path.abspath(p))
                 exps.append(experiment_dict[id])
