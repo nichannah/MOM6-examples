@@ -45,7 +45,10 @@ class Model:
     def __init__(self, name):
         self.name = name
         self.site = 'linux'
-        if 'raijin' in sp.check_output(['uname', '-a']):
+        # Get the site. FIXME: find a better way, should this be done at all?
+        # Looking at hostname does not work because compute nodes all have
+        # different ones.
+        if sp.call(shlex.split('ping -c 1 raijin1')) == 0:
             self.site = 'raijin'
 
     def build(self, build_kind, compiler):

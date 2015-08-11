@@ -18,7 +18,7 @@ class TestValgrind:
 
         print('valgrind running with exp: {}'.format(exp.name))
         build = 'debug'
-        compiler = 'gnu'
+        compiler = 'intel'
         # Build the model
         model = exp.get_model()
         m = Model(model)
