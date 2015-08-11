@@ -22,10 +22,13 @@ class TestSetup:
         root = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../', '../')
         os.chdir(root)
 
+        # Get all submodules
         assert(os.path.exists('.git'))
         sp.check_call(shlex.split('git submodule init'))
         sp.check_call(shlex.split('git submodule update'))
 
+        # Get mkmf
+        sp.check_call(shlex.split('git clone https://github.com/NOAA-GFDL/mkmf.git'))
 
     def test_download_ocean_ice(self):
         """
