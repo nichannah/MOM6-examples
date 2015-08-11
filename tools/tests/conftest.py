@@ -26,14 +26,17 @@ def pytest_generate_tests(metafunc):
             # Only run on the given experiments.
             exps = []
             for p in metafunc.config.option.exps.split(','):
+                print(p)
                 if not os.path.exists(p):
                     # If the experiment does not exist assume that it is a test
                     # case name in either ocean_only or ice_ocean_SIS2 directories
                     if os.path.exists(os.path.join('ocean_only', p)):
                         p = os.path.join('ocean_only', p)
-                    elif os.path.exists(os.path.join('ice_icean_SIS2', p)):
-                        p = os.path.join('ice_icean_SIS2', p)
+                        print(p)
+                    elif os.path.exists(os.path.join('ice_ocean_SIS2', p)):
+                        p = os.path.join('ice_ocean_SIS2', p)
 
+                 print(p)
                 assert(os.path.exists(p))
                 id = exp_id_from_path(os.path.abspath(p))
                 exps.append(experiment_dict[id])
