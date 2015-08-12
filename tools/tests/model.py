@@ -14,21 +14,21 @@ _build_fms_script = """
 ../../../../mkmf/bin/list_paths ../../../../src/FMS &&
 mv path_names path_names.orig; egrep -v "coupler" path_names.orig > path_names &&
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
-make NETCDF=3 {build}=1 libfms.a -j
+source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 libfms.a -j
 """
 
 _build_ocean_script = """
 pwd &&
 ../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/{{config_src/dynamic,config_src/solo_driver,src/{{*,*/*}}}}/
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
-make NETCDF=3 {build}=1 MOM6 -j
+source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 MOM6 -j
 """
 
 _build_ocean_ice_script = """
 pwd &&
 ../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/config_src/{{dynamic,coupled_driver}} ../../../../src/MOM6/src/{{*,*/*}}/ ../../../../src/{{atmos_null,coupler,land_null,ice_param,SIS2,FMS/coupler,FMS/include}} &&
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c '-Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO' path_names &&
-make NETCDF=3 {build}=1 MOM6 -j
+source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 MOM6 -j
 """
 
 def mkdir_p(path):

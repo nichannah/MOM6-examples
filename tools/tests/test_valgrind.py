@@ -38,7 +38,7 @@ class TestValgrind:
         except sp.CalledProcessError as e:
             ret = e.returncode
         finally:
-            with open('valgrind.out', 'r+') as f:
+            with open('valgrind.out', 'w') as f:
                 print(e.output, file=f)
             os.chdir(saved_path)
         assert(ret == 0)

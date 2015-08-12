@@ -16,5 +16,8 @@ def get_exec_prefix(model, exp_name, variation):
     if pbs_o_host is not None and 'gaea' in pbs_o_host:
         exec_prefix = 'aprun -n 16'
     elif pbs_o_host is not None and 'raijin' in pbs_o_host:
-        exec_prefix = 'mpirun -n 384'
+        ncpus = 384
+        if 'benchmark' in exp_name or 'double_gyre' in exp_name:
+            ncpus = 1
+        exec_prefix = 'mpirun -n {}'.format(ncpus)
     return exec_prefix
