@@ -29,7 +29,11 @@ class TestValgrind:
         _, cmd_prefix, exe = exp.force_run(build, compiler, fake_it=True)
 
         # Construct a new command that includes valgrind
-        cmd = cmd_prefix + ' valgrind ' + exe
+        my_dir = os.path.dirname(os.path.abspath(__file__))
+        cmd = cmd_prefix + ' -x LD_PRELOAD=/home/599/nah599/more_home/usr/local/lib/valgrind/libmpiwrap-amd64-linux.so valgrind --main-stacksize=2000000000 --max-stackframe=2000000000 --error-limit=no --gen-suppressions=all --suppressions={}/valgrind_suppressions.txt '.format(my_dir) + exe
+
+        print('cmd: {}'.format(cmd))
+
         # Run the modified command
         saved_path = os.getcwd()
         os.chdir(exp.get_path())
@@ -37,9 +41,11 @@ class TestValgrind:
             output = sp.check_output(shlex.split(cmd), stderr=sp.STDOUT)
         except sp.CalledProcessError as e:
             ret = e.returncode
+            output = e.output
         finally:
             with open('valgrind.out', 'w') as f:
-                print(e.output, file=f)
+                print(output, file=f)
+            print(output)
             os.chdir(saved_path)
         assert(ret == 0)
 
