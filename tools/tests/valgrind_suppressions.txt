@@ -1,0 +1,57 @@
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:__intel_sse2_strcpy
+   ...
+   fun:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:clone
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   read(fd)
+   ...
+   fun:clone
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr1
+   fun:ri_get_field
+   ...
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr16
+   fun:__intel_sse2_strlen
+   ...
+   fun:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Addr16
+   fun:__intel_sse2_strcpy
+   ...
+   fun:*
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:for_adjustl
+   ...
+   fun:*
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:for_len_trim
+   ...
+   fun:*
+}
