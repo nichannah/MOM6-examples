@@ -32,7 +32,7 @@ class TestValgrind:
         my_dir = os.path.dirname(os.path.abspath(__file__))
         cmd = cmd_prefix + ' -x LD_PRELOAD=/home/599/nah599/more_home/usr/local/lib/valgrind/libmpiwrap-amd64-linux.so valgrind --main-stacksize=2000000000 --max-stackframe=2000000000 --error-limit=no --gen-suppressions=all --suppressions={}/valgrind_suppressions.txt '.format(my_dir) + exe
 
-        print('cmd: {}'.format(cmd))
+        # Modify the model runtime to be 1 hour only
 
         # Run the modified command
         saved_path = os.getcwd()

@@ -11,13 +11,16 @@ def get_exec_prefix(model, exp_name, variation):
     variation is the a variation on the experiment, e.g. z, layer. 
     """
 
-    ncpus = 384
-    if 'benchmark' in exp_name or 'double_gyre' in exp_name:
-        ncpus = 1
-    exec_prefix = 'mpirun -n {}'.format(ncpus)
+    pbs_ncpus = os.getenv('PBS_NCPUS')
+    if pbs_ncpus is not None:
+        ncpus = int(ncpus)
+    else:
+        ncpus = 2
 
     pbs_o_host = os.getenv('PBS_O_HOST')
     if pbs_o_host is not None and 'gaea' in pbs_o_host:
         exec_prefix = 'aprun -n {}'.format(ncpus)
+    else:
+        exec_prefix = 'mpirun -n {}'.format(ncpus)
 
     return exec_prefix

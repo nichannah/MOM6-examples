@@ -21,12 +21,14 @@ def pytest_generate_tests(metafunc):
     """
     def select_exps(metafunc):
         if metafunc.config.option.fast:
-            # Default is to run on a fast subset of the experiments.
+            # Run a fast subset of the experiments.
             exps = [experiment_dict['ocean_only/double_gyre']]
         elif metafunc.config.option.exps is not None:
             # Only run on the given experiments.
             exps = []
             for e in metafunc.config.option.exps.split(','):
+                # Replace '-' with '/'. Jenkins does the wrong thing with these.
+                e = e.replace('-', '/')
                 if not experiment_dict.has_key(e):
                     if experiment_dict.has_key('ocean_only/' + e):
                         e = 'ocean_only/' + e
@@ -35,8 +37,7 @@ def pytest_generate_tests(metafunc):
                 exps.append(experiment_dict[e])
         else:
             # Run tests on all experiments.
-            #exps = experiment_dict.values()
-            exps = [experiment_dict['ocean_only/benchmark']]
+            exps = experiment_dict.values()
         return exps
 
     if 'exp' in metafunc.fixturenames:
