@@ -9,10 +9,13 @@ from model import Model
 
 class TestRun:
 
-    def test_run(self, exp, build, compiler):
+    def test_run(self, exp):
         """
         Run experiments
         """
+        compiler = 'intel'
+        build = 'repro'
+
         model = exp.get_model()
         m = Model(model)
         ret = m.build(build, compiler)

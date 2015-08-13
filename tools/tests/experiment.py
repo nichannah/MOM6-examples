@@ -57,7 +57,7 @@ _unfinished_diags = [('ocean_model', 'uml_restrat'),
 
 def exp_id_from_path(path):
     """
-    Return an experiment id string of the form <model>/<exp>/<variation> from a
+    Return an experiment id string of the form <model>/<exp> from a
     full path.
     """
     path = os.path.normpath(path)
@@ -71,20 +71,13 @@ class Experiment:
         """
         Python representation of an experiment/test case.
 
-        The id is a string of the form <model>/<exp>/<variation>.
+        The id is a string of the form <model>/<exp>
         """
 
         id = id.split('/')
         self.model = id[0]
-        self.name = id[1]
-        if len(id) == 3:
-            self.variation = id[2]
-        else:
-            self.variation = None
-
+        self.name = ''.join(id[1:])
         self.path = os.path.join(_mom_examples_path, self.model, self.name)
-        if self.variation is not None:
-            self.path = os.path.join(self.path, self.variation)
 
         # Lists of available and unfinished diagnostics.
         self.available_diags = self._parse_available_diags()
@@ -159,7 +152,7 @@ class Experiment:
         os.chdir(self.path)
         mkdir_p('RESTART')
         try:
-            prefix = rc.get_exec_prefix(self.model, self.name, self.variation)
+            prefix = rc.get_exec_prefix(self.model, self.name)
             cmd = prefix + ' ' + exec_path
             if not fake_it:
                 print('Executing ' + cmd)
@@ -192,10 +185,11 @@ def discover_experiments():
 
     # Path to top level MOM-examples
     exps = {}
-    for path, _, filenames in os.walk(_mom_examples_path):
+    for path, dirs, filenames in os.walk(_mom_examples_path):
         for fname in filenames:
-            if fname == 'input.nml':
+            if fname == 'input.nml' and 'common' not in path:
                 id = exp_id_from_path(path)
+                print(id)
                 exps[id] = Experiment(id)
     return exps
 

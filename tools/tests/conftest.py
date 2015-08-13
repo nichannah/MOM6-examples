@@ -36,8 +36,8 @@ def pytest_generate_tests(metafunc):
                         e = 'ice_ocean_SIS2/' + e
                 exps.append(experiment_dict[e])
         else:
-            # Run tests on all experiments.
-            exps = experiment_dict.values()
+            # Run tests on all experiments. For now only do ocean_only
+            exps = [e for e in experiment_dict.values() if 'ocean_only' in e.path]
         return exps
 
     if 'exp' in metafunc.fixturenames:
