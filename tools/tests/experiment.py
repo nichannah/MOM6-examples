@@ -76,7 +76,7 @@ class Experiment:
 
         id = id.split('/')
         self.model = id[0]
-        self.name = ''.join(id[1:])
+        self.name = '/'.join(id[1:])
         self.path = os.path.join(_mom_examples_path, self.model, self.name)
 
         # Lists of available and unfinished diagnostics.
@@ -189,7 +189,6 @@ def discover_experiments():
         for fname in filenames:
             if fname == 'input.nml' and 'common' not in path:
                 id = exp_id_from_path(path)
-                print(id)
                 exps[id] = Experiment(id)
     return exps
 
