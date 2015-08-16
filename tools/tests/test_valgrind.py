@@ -32,11 +32,10 @@ class TestValgrind:
         my_dir = os.path.dirname(os.path.abspath(__file__))
         cmd = cmd_prefix + ' -x LD_PRELOAD=/home/599/nah599/more_home/usr/local/lib/valgrind/libmpiwrap-amd64-linux.so valgrind --main-stacksize=2000000000 --max-stackframe=2000000000 --error-limit=no --track-origins=yes -v --gen-suppressions=all --suppressions={}/valgrind_suppressions.txt '.format(my_dir) + exe
 
-        # Modify the model runtime to be 1 hour only
-
         # Run the modified command
         saved_path = os.getcwd()
         os.chdir(exp.get_path())
+        output = ''
         try:
             output = sp.check_output(shlex.split(cmd), stderr=sp.STDOUT)
         except sp.CalledProcessError as e:
@@ -50,3 +49,7 @@ class TestValgrind:
         assert(ret == 0)
 
         # Do checks on valgrind output.
+        errs = re.findall('ERROR SUMMARY: (\d+) errors from \d+ contexts', output)
+        assert(len(errs) != 0)
+        errs = map(int, errs)
+        assert(sum(errs) == 0)

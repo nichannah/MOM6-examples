@@ -11,14 +11,31 @@
    ...
    fun:clone
 }
+
 {
    <insert_a_suppression_name_here>
    Memcheck:Param
-   read(fd)
+   write(buf)
+   obj:*
    ...
    fun:clone
 }
 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   read(fd)
+   obj:*
+   ...
+   fun:clone
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Value8
+   ...
+   fun:clone
+}
 {
    <insert_a_suppression_name_here>
    Memcheck:Addr1
@@ -47,6 +64,7 @@
    ...
    fun:*
 }
+
 
 {
    <insert_a_suppression_name_here>
