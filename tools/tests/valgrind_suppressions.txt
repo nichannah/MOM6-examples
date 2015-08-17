@@ -65,6 +65,37 @@
    fun:*
 }
 
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   ...
+   fun:orte_progress_thread_engine
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   close(fd)
+   ...
+   fun:orte_progress_thread_engine
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   munmap(start)
+   fun:munmap
+   ...
+   fun:orte_progress_thread_engine
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Param
+   munmap(length)
+   ...
+   fun:orte_progress_thread_engine
+}
 
 {
    <insert_a_suppression_name_here>
