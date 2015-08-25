@@ -6,8 +6,12 @@ import os
 import shlex
 import subprocess as sp
 import pytest
+import re
 
 from model import Model
+
+VALGRIND_MPI_WRAPPER_PATH = '/home/599/nah599/more_home/usr/local/lib/valgrind/'
+VALGRIND_EXE_PATH = '/home/599/nah599/more_home/usr/local/bin/'
 
 class TestValgrind:
 
@@ -30,7 +34,7 @@ class TestValgrind:
 
         # Construct a new command that includes valgrind
         my_dir = os.path.dirname(os.path.abspath(__file__))
-        cmd = cmd_prefix + ' -x LD_PRELOAD=/home/599/nah599/more_home/usr/local/lib/valgrind/libmpiwrap-amd64-linux.so valgrind --main-stacksize=2000000000 --max-stackframe=2000000000 --error-limit=no --track-origins=yes -v --gen-suppressions=all --suppressions={}/valgrind_suppressions.txt '.format(my_dir) + exe
+        cmd = cmd_prefix + ' -x LD_PRELOAD={}/libmpiwrap-amd64-linux.so {}/valgrind --main-stacksize=2000000000 --max-stackframe=2000000000 --error-limit=no --track-origins=yes -v --gen-suppressions=all --suppressions={}/valgrind_suppressions.txt '.format(VALGRIND_MPI_WRAPPER_PATH, VALGRIND_EXE_PATH, my_dir) + exe
 
         # Run the modified command
         saved_path = os.getcwd()
