@@ -12,7 +12,6 @@ _build_dir = os.path.normpath(os.path.join(_file_dir, '../../build'))
 # FIXME: replace these with cmake
 _build_fms_script = """
 ../../../../mkmf/bin/list_paths ../../../../src/FMS &&
-mv path_names path_names.orig; egrep -v "coupler" path_names.orig > path_names &&
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
 source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 libfms.a -j
 """
