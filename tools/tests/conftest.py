@@ -53,43 +53,17 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize('model', models, indirect=True)
 
     if 'build' in metafunc.fixturenames:
-        builds = ['debug', 'repro']
-        metafunc.parametrize('build', builds, indirect=True)
-
-    if 'compiler' in metafunc.fixturenames:
-        compilers = ['gnu', 'intel']
-        metafunc.parametrize('compiler', compilers, indirect=True)
-
-@pytest.fixture
-def model(request):
-    return request.param
-
-@pytest.fixture
-def build(request):
-    return request.param
-
-@pytest.fixture
-def compiler(request):
-    return request.param
-
-    if 'prerun_exp' in metafunc.fixturenames:
-        exps = select_exps(metafunc)
-        metafunc.parametrize('prerun_exp', exps, indirect=True)
-
-    if 'model' in metafunc.fixturenames:
-        if metafunc.config.option.slow:
-            models = ['ocean_only', 'ice_ocean_SIS2']
+        if metafunc.config.option.fast:
+            builds = ['debug']
         else:
-            # Default is to run on a fast subset
-            models = ['ocean_only']
-        metafunc.parametrize('model', models, indirect=True)
-
-    if 'build' in metafunc.fixturenames:
-        builds = ['debug', 'repro']
+            builds = ['debug', 'repro']
         metafunc.parametrize('build', builds, indirect=True)
 
     if 'compiler' in metafunc.fixturenames:
-        compilers = ['gnu', 'intel']
+        if metafunc.config.option.fast:
+            compilers = ['gnu']
+        else:
+            compilers = ['gnu', 'intel']
         metafunc.parametrize('compiler', compilers, indirect=True)
 
 @pytest.fixture
@@ -106,9 +80,6 @@ def compiler(request):
 
 @pytest.fixture
 def exp(request):
-    """
-    Fixture for tests than need an experiment which has not been run.
-    """
     return request.param
 
 @pytest.fixture

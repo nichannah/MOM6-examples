@@ -13,8 +13,8 @@ class TestRun:
         """
         Run experiments
         """
-        compiler = 'intel'
-        build = 'repro'
+        compiler = 'gnu'
+        build = 'debug'
 
         model = exp.get_model()
         m = Model(model)

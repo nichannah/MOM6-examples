@@ -13,6 +13,13 @@ from model import Model
 VALGRIND_MPI_WRAPPER_PATH = '/home/599/nah599/more_home/usr/local/lib/valgrind/'
 VALGRIND_EXE_PATH = '/home/599/nah599/more_home/usr/local/bin/'
 
+def check_mpi_version(exe, expect_string):
+    """
+    Check that the executable is built with the same compiler and mpi version.
+    """
+    pass
+
+
 class TestValgrind:
 
     def test_run(self, exp):
@@ -39,6 +46,7 @@ class TestValgrind:
         # Run the modified command
         saved_path = os.getcwd()
         os.chdir(exp.get_path())
+        print('Running {} in dir {}'.format(cmd, exp.get_path()))
         output = ''
         try:
             output = sp.check_output(shlex.split(cmd), stderr=sp.STDOUT)

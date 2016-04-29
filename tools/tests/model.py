@@ -9,7 +9,6 @@ import shlex
 _file_dir = os.path.dirname(os.path.abspath(__file__))
 _build_dir = os.path.normpath(os.path.join(_file_dir, '../../build'))
 
-# FIXME: replace these with cmake
 _build_fms_script = """
 ../../../../mkmf/bin/list_paths ../../../../src/FMS &&
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -p libfms.a -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
@@ -18,14 +17,14 @@ source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 lib
 
 _build_ocean_script = """
 pwd &&
-../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/{{config_src/dynamic,config_src/solo_driver,src/{{*,*/*}}}}/
+../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/{{config_src/dynamic_symmetric,config_src/solo_driver,src/{{*,*/*}}}}/
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c "-Duse_libMPI -Duse_netCDF -DSPMD" path_names &&
 source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 MOM6 -j
 """
 
 _build_ocean_ice_script = """
 pwd &&
-../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/config_src/{{dynamic,coupled_driver}} ../../../../src/MOM6/src/{{*,*/*}}/ ../../../../src/{{atmos_null,coupler,land_null,ice_param,SIS2,FMS/coupler,FMS/include}} &&
+../../../../mkmf/bin/list_paths ./ ../../../../src/MOM6/config_src/{{dynamic_symmetric,coupled_driver}} ../../../../src/MOM6/src/{{*,*/*}}/ ../../../../src/{{atmos_null,coupler,land_null,ice_param,SIS2,FMS/coupler,FMS/include}} &&
 ../../../../mkmf/bin/mkmf -t ../../../../mkmf/templates/{site}-{compiler}.mk -o '-I../../shared/{build}' -p 'MOM6 -L../../shared/{build} -lfms' -c '-Duse_libMPI -Duse_netCDF -DSPMD -DUSE_LOG_DIAG_FIELD_INFO' path_names &&
 source ../../../../mkmf/env/{site}-{compiler}.env && make NETCDF=3 {build}=1 MOM6 -j
 """
