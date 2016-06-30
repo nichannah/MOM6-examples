@@ -1,329 +1,1522 @@
-GOLD_SIS
-1 1 1 0 0 0 
-#output files
-# "ice_month",      1,  "months", 1, "days", "time",
-# "ocean_month",    1,  "months", 1, "days", "time",
-# "ocean_month_z",  1,  "months", 1, "days", "time",
-# "flux_month",     1,  "months", 1, "days", "time"
-
-"ice_month",      1,  "days", 1, "days", "time",
-"ocean_month",    1,  "days", 1, "days", "time",
-"ocean_sfc",      1,  "days", 1, "days", "time",
-"ocean_month_z",  1,  "days", 1, "days", "time",
-# "flux_month",     5,  "days", 1, "days", "time"
-"ocean_static",  -1,  "months", 1, "days", "time",
-#"ocean_scalar",   1,  "months", 1, "days", "time"
-#
-#output variables
-#
-# OCEAN DIAGNOSTICS:
-#===================
-#===================
-#
-# Surface Ocean fields:
-#=========================
-"ocean_model","SSH","SSH","ocean_sfc","all",.false.,"none",2
-"ocean_model","SSU","SSU","ocean_sfc","all",.false.,"none",2
-"ocean_model","SSV","SSV","ocean_sfc","all",.false.,"none",2
-"ocean_model","SST","SST","ocean_sfc","all",.false.,"none",2
-"ocean_model","SSS","SSS","ocean_sfc","all",.false.,"none",2
-"ocean_model","speed","speed","ocean_sfc","all",.false.,"none",2
-
-# Prognostic Ocean fields:
-#=========================
-"ocean_model","u","u","ocean_month","all",.true.,"none",2
-"ocean_model","v","v","ocean_month","all",.true.,"none",2
-"ocean_model","h","h","ocean_month","all",.true.,"none",1
-"ocean_model","e","e","ocean_month","all",.true.,"none",2
-"ocean_model","temp","temp","ocean_month","all",.true.,"none",2
-"ocean_model","salt","salt","ocean_month","all",.true.,"none",2
-#"ocean_model","e","e","ocean_daily","all",.false.,"none",2
-#
-# Auxilary Tracers:
-#==================
-#"ocean_model","vintage","vintage","ocean_month","all",.true.,"none",2
-#"ocean_model","age","age","ocean_month","all",.true.,"none",2
-#
-# Z-space fields:
-#==================
-"ocean_model_z","u","u","ocean_month_z","all",.true.,"none",2
-"ocean_model_z","v","v","ocean_month_z","all",.true.,"none",2
-"ocean_model_z","temp","temp","ocean_month_z","all",.true.,"none",2
-"ocean_model_z","salt","salt","ocean_month_z","all",.true.,"none",2
-#"ocean_model_z","vintage","vintage","ocean_month_z","all",.true.,"none",2
-"ocean_model_z","age","age","ocean_month_z","all",.true.,"none",2
-
-# Continuity Equation Terms:
-#===========================
-#"ocean_model","wd","wd","ocean_month","all",.true.,"none",2
-"ocean_model","uh","uh","ocean_month","all",.true.,"none",2
-"ocean_model","vh","vh","ocean_month","all",.true.,"none",2
-#"ocean_model","h_rho","h_rho","ocean_month","all",.true.,"none",2
-#"ocean_model","uh_rho","uh_rho","ocean_month","all",.true.,"none",2
-#"ocean_model","vh_rho","vh_rho","ocean_month","all",.true.,"none",2
-#"ocean_model","uhGM_rho","uhGM_rho","ocean_month","all",.true.,"none",2
-#"ocean_model","vhGM_rho","vhGM_rho","ocean_month","all",.true.,"none",2
-"ocean_model","GMwork","GMwork","ocean_month","all",.true.,"none",2
-#
-# Mixed Layer TKE Budget Terms:
-#===========================
-#"ocean_model","TKE_wind","TKE_wind","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_RiBulk","TKE_RiBulk","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_conv","TKE_conv","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_pen_SW","TKE_pen_SW","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_mixing","TKE_mixing","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_mech_decay","TKE_mech_decay","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_conv_decay","TKE_conv_decay","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_conv_s2","TKE_conv_s2","ocean_month","all",.true.,"none",2
-#"ocean_model","TKE_tidal","TKE_tidal","ocean_month","all",.true.,"none",2
-#"ocean_model","h_ML","h_ML","ocean_month","all",.true.,"none",2
-#"ocean_model","Kd_effective","Kd_effective","ocean_month","all",.true.,"none",2
-#
-# Tracer Fluxes:
-#==================
-#"ocean_model","T_adx",  "T_adx",  "ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","T_ady",  "T_ady",  "ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","T_diffx","T_diffx","ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","T_diffy","T_diffy","ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","S_adx",  "S_adx",  "ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","S_ady",  "S_ady",  "ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","S_diffx","S_diffx","ave_prog_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","S_diffy","S_diffy","ave_prog_%4yr_%3dy","all",.true.,"none",2
-
-
-# Momentum Balance Terms:
-#=======================
-#"ocean_model","dudt","dudt","ocean_month","all",.true.,"none",2
-#"ocean_model","dvdt","dvdt","ocean_month","all",.true.,"none",2
-#"ocean_model","CAu","CAu","ocean_month","all",.true.,"none",2
-#"ocean_model","CAv","CAv","ocean_month","all",.true.,"none",2
-#"ocean_model","PFu","PFu","ocean_month","all",.true.,"none",2
-#"ocean_model","PFv","PFv","ocean_month","all",.true.,"none",2
-#"ocean_model","du_dt_visc","du_dt_visc","ocean_month","all",.true.,"none",2
-#"ocean_model","dv_dt_visc","dv_dt_visc","ocean_month","all",.true.,"none",2
-#"ocean_model","diffu","diffu","ocean_month","all",.true.,"none",2
-#"ocean_model","diffv","diffv","ocean_month","all",.true.,"none",2
-#"ocean_model","dudt_dia","dudt_dia","ocean_month","all",.true.,"none",2
-#"ocean_model","dvdt_dia","dvdt_dia","ocean_month","all",.true.,"none",2
-# Subterms that should not be added to a closed budget.
-#"ocean_model","gKEu","gKEu","ocean_month","all",.true.,"none",2
-#"ocean_model","gKEv","gKEv","ocean_month","all",.true.,"none",2
-#"ocean_model","rvxu","rvxu","ocean_month","all",.true.,"none",2
-#"ocean_model","rvxv","rvxv","ocean_month","all",.true.,"none",2
-#"ocean_model","PFu_bc","PFu_bc","ocean_month","all",.true.,"none",2
-#"ocean_model","PFv_bc","PFv_bc","ocean_month","all",.true.,"none",2
-
-# Barotropic Momentum Balance Terms:
-# (only available with split time stepping.)
-#===========================================
-#"ocean_model","PFuBT","PFuBT","ocean_month","all",.true.,"none",2
-#"ocean_model","PFvBT","PFvBT","ocean_month","all",.true.,"none",2
-#"ocean_model","CoruBT","CoruBT","ocean_month","all",.true.,"none",2
-#"ocean_model","CorvBT","CorvBT","ocean_month","all",.true.,"none",2
-#"ocean_model","ubtforce","ubtforce","ocean_month","all",.true.,"none",2
-#"ocean_model","vbtforce","vbtforce","ocean_month","all",.true.,"none",2
-#"ocean_model","u_accel_bt","u_accel_bt","ocean_month","all",.true.,"none",2
-#"ocean_model","v_accel_bt","v_accel_bt","ocean_month","all",.true.,"none",2
-#
-# Viscosities and diffusivities:
-#===============================
-#"ocean_model","Kd","Kd","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","Ahh","Ahh","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","Ahq","Ahq","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","Khh","Khh","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","Khq","Khq","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","bbl_thick_u","bbl_thick_u","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","kv_bbl_u","kv_bbl_u","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","bbl_thick_v","bbl_thick_v","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","kv_bbl_v","kv_bbl_v","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","av_visc","av_visc","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","au_visc","au_visc","visc_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","FrictWork","FrictWork","ocean_month","all",.true.,"none",2
-#"ocean_model","SN_u","SN_u","ocean_month","all",.true.,"none",2
-#"ocean_model","SN_v","SN_v","ocean_month","all",.true.,"none",2
-#"ocean_model","NH","NH","ocean_month","all",.true.,"none",2
-#"ocean_model","Ld","Ld","ocean_month","all",.true.,"none",2
-#"ocean_model","Le","Le","ocean_month","all",.true.,"none",2
-#"ocean_model","L2u","L2u","ocean_month","all",.true.,"none",2
-#"ocean_model","L2v","L2v","ocean_month","all",.true.,"none",2
-#"ocean_model","S2u","S2u","ocean_month","all",.true.,"none",2
-#"ocean_model","S2v","S2v","ocean_month","all",.true.,"none",2
-#"ocean_model","eff_beta","eff_beta","ocean_month","all",.true.,"none",2
-"ocean_model","KHTH_u","KHTH_u","ocean_month","all",.true.,"none",2
-"ocean_model","KHTH_v","KHTH_v","ocean_month","all",.true.,"none",2
-"ocean_model","KHTR_u","KHTR_u","ocean_month","all",.true.,"none",2
-"ocean_model","KHTR_v","KHTR_v","ocean_month","all",.true.,"none",2
-
-# MEKE:
-#======
-# "ocean_model","MEKE","MEKE","ocean_month","all",.true.,"none",2
-# "ocean_model","MEKE_src","MEKE_src","ocean_month","all",.true.,"none",2
-# "ocean_model","MEKE_Kh","MEKE_Kh","ocean_month","all",.true.,"none",2
-#
-# Kinetic Energy Balance Terms:
-#=============================
-#"ocean_model","KE","KE","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","dKE_dt","dKE_dt","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","PE_to_KE","PE_to_KE","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","KE_Coradv","KE_Coradv","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","KE_adv","KE_adv","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","KE_visc","KE_visc","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","KE_horvisc","KE_horvisc","energy_%4yr_%3dy","all",.true.,"none",2
-#"ocean_model","KE_dia","KE_dia","energy_%4yr_%3dy","all",.true.,"none",2
-#
-# Surface Forcing:
-#=================
-"ocean_model","taux",     "taux",     "ocean_month","all",.true.,"none",2
-"ocean_model","tauy",     "tauy",     "ocean_month","all",.true.,"none",2
-"ocean_model","ustar",    "ustar",    "ocean_month","all",.true.,"none",2
-"ocean_model","PRCmE",    "PRCmE",    "ocean_month","all",.true.,"none",2
-"ocean_model","SW",       "SW",       "ocean_month","all",.true.,"none",2
-"ocean_model","LwLatSens","LwLatSens","ocean_month","all",.true.,"none",2
-"ocean_model","p_surf",   "p_surf",   "ocean_month","all",.true.,"none",2
-"ocean_model","salt_flux","salt_flux","ocean_month","all",.true.,"none",2
-
-# Static ocean fields:
-#=====================
-"ocean_model", "geolon",      "geolon",      "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolat",      "geolat",      "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolon_c",    "geolon_c",    "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolat_c",    "geolat_c",    "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolon_u",    "geolon_u",    "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolat_u",    "geolat_u",    "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolon_v",    "geolon_v",    "ocean_static", "all", .false., "none", 2
-"ocean_model", "geolat_v",    "geolat_v",    "ocean_static", "all", .false., "none", 2
-"ocean_model", "area_t",      "area_t",      "ocean_static", "all", .false., "none", 2
-"ocean_model", "depth_ocean", "depth_ocean", "ocean_static", "all", .false., "none", 2
-"ocean_model", "wet",         "wet",         "ocean_static", "all", .false., "none", 2
-"ocean_model", "wet_c",       "wet_c",       "ocean_static", "all", .false., "none", 2
-"ocean_model", "wet_u",       "wet_u",       "ocean_static", "all", .false., "none", 2
-"ocean_model", "wet_v",       "wet_v",       "ocean_static", "all", .false., "none", 2
-"ocean_model", "Coriolis",    "Coriolis",    "ocean_static", "all", .false., "none", 2
-
-#
-# ICE DIAGNOSTICS:
-#=================
-#=================
-"ice_model", "FRAZIL",     "FRAZIL",     "ice_month", "all", .true., "none", 2,
-"ice_model", "HI",         "HI",         "ice_month", "all", .true., "none", 2,
-"ice_model", "HS",         "HS",         "ice_month", "all", .true., "none", 2,
-"ice_model", "TS",         "TS",         "ice_month", "all", .true., "none", 2,
-"ice_model", "T1",         "T1",         "ice_month", "all", .true., "none", 2,
-"ice_model", "T2",         "T2",         "ice_month", "all", .true., "none", 2,
-"ice_model", "CN",         "CN",         "ice_month", "all", .true., "none", 2,
-"ice_model", "EXT",        "EXT",        "ice_month", "all", .true., "none", 2,
-"ice_model", "MI",         "MI",         "ice_month", "all", .true., "none", 2,
-"ice_model", "XPRT",       "XPRT",       "ice_month", "all", .true., "none", 2,
-"ice_model", "LSRC",       "LSRC",       "ice_month", "all", .true., "none", 2,
-"ice_model", "LSNK",       "LSNK",       "ice_month", "all", .true., "none", 2,
-"ice_model", "BSNK",       "BSNK",       "ice_month", "all", .true., "none", 2,
-"ice_model", "SN2IC",      "SN2IC",      "ice_month", "all", .true., "none", 2,
-"ice_model", "ALB",        "ALB",        "ice_month", "all", .true., "none", 2,
-"ice_model", "SW",         "SW",         "ice_month", "all", .true., "none", 2,
-"ice_model", "LW",         "LW",         "ice_month", "all", .true., "none", 2,
-"ice_model", "SH",         "SH",         "ice_month", "all", .true., "none", 2,
-"ice_model", "LH",         "LH",         "ice_month", "all", .true., "none", 2,
-"ice_model", "TMELT",      "TMELT",      "ice_month", "all", .true., "none", 2,
-"ice_model", "BMELT",      "BMELT",      "ice_month", "all", .true., "none", 2,
-"ice_model", "BHEAT",      "BHEAT",      "ice_month", "all", .true., "none", 2,
-"ice_model", "UI",         "UI",         "ice_month", "all", .true., "none", 2,
-"ice_model", "VI",         "VI",         "ice_month", "all", .true., "none", 2,
-"ice_model", "FA_X",       "FA_X",       "ice_month", "all", .true., "none", 2,
-"ice_model", "FA_Y",       "FA_Y",       "ice_month", "all", .true., "none", 2,
-"ice_model", "FI_X",       "FI_X",       "ice_month", "all", .true., "none", 2,
-"ice_model", "FI_Y",       "FI_Y",       "ice_month", "all", .true., "none", 2,
-"ice_model", "SST",        "SST",        "ice_month", "all", .true., "none", 2,
-"ice_model", "SSS",        "SSS",        "ice_month", "all", .true., "none", 2,
-"ice_model", "SSH",        "SSH",        "ice_month", "all", .true., "none", 2,
-"ice_model", "UO",         "UO",         "ice_month", "all", .true., "none", 2,
-"ice_model", "VO",         "VO",         "ice_month", "all", .true., "none", 2,
-"ice_model", "SNOWFL",     "SNOWFL",     "ice_month", "all", .true., "none", 2,
-"ice_model", "RAIN",       "RAIN",       "ice_month", "all", .true., "none", 2,
-"ice_model", "CALVING",    "CALVING",    "ice_month", "all", .true., "none", 2,
-"ice_model", "RUNOFF",     "RUNOFF",     "ice_month", "all", .true., "none", 2,
-"ice_model", "CELL_AREA",  "CELL_AREA",  "ice_month", "all", .false., "none", 2,
-"ice_model", "GEOLON",     "GEOLON",     "ice_month", "all", .false., "none", 2,
-"ice_model", "GEOLAT",     "GEOLAT",     "ice_month", "all", .false., "none", 2,
-"ice_model", "SINROT",     "SINROT",     "ice_month", "all", .false., "none", 2,
-"ice_model", "COSROT",     "COSROT",     "ice_month", "all", .false., "none", 2,
-"ice_model", "SALTF",      "SALTF",      "ice_month", "all", .true., "none", 2,
-"ice_model", "IX_TRANS",   "IX_TRANS",   "ice_month", "all", .true., "none", 2,
-"ice_model", "IY_TRANS",   "IY_TRANS",   "ice_month", "all", .true., "none", 2,
-#
-#========================
-# ATMOSPHERE DIAGNOSTICS:
-#========================
-#========================
-# "flux",      "land_mask",   "land_mask",   "flux_month", "all", .false., "none", 2,
-# "flux",      "ice_mask",    "ice_mask",    "flux_month", "all", .true.,  "none", 2,
-# "flux",      "drag_moist",  "drag_moist",  "flux_month", "all", .true.,  "none", 2,
-# "flux",      "drag_heat",   "drag_heat",   "flux_month", "all", .true.,  "none", 2,
-# "flux",      "drag_mom",    "drag_mom",    "flux_month", "all", .true.,  "none", 2,
-# "flux",      "wind",        "wind",        "flux_month", "all", .true.,  "none", 2,
-# # "flux" forcing fields for land model: wind, q_ref atmos_8xdaily
-# #"flux",      "wind",        "wind",        "atmos_8xdaily", "all", .true., "none", 2,
-# #"flux",      "q_ref",       "q_ref",       "atmos_8xdaily", "all", .true., "none", 2,
-# "flux",      "tau_x",       "tau_x",       "flux_month", "all", .true.,  "none", 2,
-# "flux",      "tau_y",       "tau_y",       "flux_month", "all", .true.,  "none", 2,
-# "flux",      "shflx",       "shflx",       "flux_month", "all", .true.,  "none", 2,
-# "flux",      "evap",        "evap",        "flux_month", "all", .true.,  "none", 2,
-# "flux",      "lwflx",       "lwflx",       "flux_month", "all", .true.,  "none", 2,
-# "flux",      "rh_ref",      "rh_ref",      "flux_month", "all", .true.,  "none", 2,
-# "flux",      "u_ref",       "u_ref",       "flux_month", "all", .true.,  "none", 2,
-# "flux",      "v_ref",       "v_ref",       "flux_month", "all", .true.,  "none", 2,
-# "flux",      "u_atm",       "u_atm",       "flux_month", "all", .true.,"none", 2,
-# "flux",      "v_atm",       "v_atm",       "flux_month", "all", .true.,"none", 2,
-# "flux",      "t_atm",       "t_atm",       "flux_month", "all", .true.,"none", 2,
-# "flux",      "t_surf",      "t_surf",      "flux_month", "all", .true.,"none", 2,
-# "flux",      "q_atm",       "q_atm",       "flux_month", "all", .true.,"none", 2,
-#
-# For these "_col" fields, set do_cmip_diagnostics=.true. in &shortwave_driver_nml, and uncomment
-#"radiation", "organic_carbon_exopdep_col","org_crb_exdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "organic_carbon_abopdep_col","org_crb_abdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "black_carbon_exopdep_col",  "blk_crb_exdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "black_carbon_abopdep_col",  "blk_crb_abdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "sea_salt_exopdep_col",      "salt_exdep_c",    "atmos_month", "all", .true., "none", 2,
-#"radiation", "sea_salt_abopdep_col",      "salt_abdep_c",    "atmos_month", "all", .true., "none", 2,
-#"radiation", "so4_anthro_col",            "so4_ant_col",     "atmos_month", "all", .true., "none", 2,
-#"radiation", "so4_natural_col",           "so4_nat_col",     "atmos_month", "all", .true., "none", 2,
-#"radiation", "small_dust_exopdep_col",    "sm_dust_exdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "small_dust_abopdep_col",    "sm_dust_abdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "large_dust_exopdep_col",    "lg_dust_exdep_c", "atmos_month", "all", .true., "none", 2,
-#"radiation", "large_dust_abopdep_col",    "lg_dust_abdep_c", "atmos_month", "all", .true., "none", 2,
-#
-
-
-#=============================================================================================
-#
-#====> This file can be used with diag_manager/v2.0a (or higher) <====
-#
-#
-#  FORMATS FOR FILE ENTRIES (not all input values are used)
-#  ------------------------
-#
-#"file_name", output_freq, "output_units", format, "time_units", "long_name",
-#
-#
-#output_freq:  > 0  output frequency in "output_units"
-#              = 0  output frequency every time step
-#              =-1  output frequency at end of run
-#
-#output_units = units used for output frequency
-#               (years, months, days, minutes, hours, seconds)
-#
-#time_units   = units used to label the time axis
-#               (days, minutes, hours, seconds)
-#
-#
-#  FORMAT FOR FIELD ENTRIES (not all input values are used)
-#  ------------------------
-#
-#"module_name", "field_name", "output_name", "file_name" "time_sampling", time_avg, "other_opts", packing
-#
-#time_avg = .true. or .false.
-#
-#packing  = 1  double precision
-#         = 2  float
-#         = 4  packed 16-bit integers
-#         = 8  packed 1-byte (not tested?)
-
+All Baltic diags
+1 1 1 0 0 0
+"ice_model_AGE", 0, "seconds", 1, "seconds","time"
+"ice_model_ALB", 0, "seconds", 1, "seconds","time"
+"ice_model_BHEAT", 0, "seconds", 1, "seconds","time"
+"ice_model_BMELT", 0, "seconds", 1, "seconds","time"
+"ice_model_BSNK", 0, "seconds", 1, "seconds","time"
+"ice_model_CALVING", 0, "seconds", 1, "seconds","time"
+"ice_model_CALVING_HFLX", 0, "seconds", 1, "seconds","time"
+"ice_model_CI_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_CI_proj", 0, "seconds", 1, "seconds","time"
+"ice_model_CI_tot", 0, "seconds", 1, "seconds","time"
+"ice_model_CN", 0, "seconds", 1, "seconds","time"
+"ice_model_E2MELT", 0, "seconds", 1, "seconds","time"
+"ice_model_EVAP", 0, "seconds", 1, "seconds","time"
+"ice_model_EXT", 0, "seconds", 1, "seconds","time"
+"ice_model_FA_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FA_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FC_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FC_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_d_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_d_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_s_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_s_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_t_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FI_t_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FP_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FP_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_FRAZIL", 0, "seconds", 1, "seconds","time"
+"ice_model_FW_X", 0, "seconds", 1, "seconds","time"
+"ice_model_FW_Y", 0, "seconds", 1, "seconds","time"
+"ice_model_HI", 0, "seconds", 1, "seconds","time"
+"ice_model_HS", 0, "seconds", 1, "seconds","time"
+"ice_model_IX_TRANS", 0, "seconds", 1, "seconds","time"
+"ice_model_IY_TRANS", 0, "seconds", 1, "seconds","time"
+"ice_model_LH", 0, "seconds", 1, "seconds","time"
+"ice_model_LSNK", 0, "seconds", 1, "seconds","time"
+"ice_model_LSRC", 0, "seconds", 1, "seconds","time"
+"ice_model_LW", 0, "seconds", 1, "seconds","time"
+"ice_model_LWDN", 0, "seconds", 1, "seconds","time"
+"ice_model_MI", 0, "seconds", 1, "seconds","time"
+"ice_model_MIB", 0, "seconds", 1, "seconds","time"
+"ice_model_MIS_tot", 0, "seconds", 1, "seconds","time"
+"ice_model_MI_U", 0, "seconds", 1, "seconds","time"
+"ice_model_MI_V", 0, "seconds", 1, "seconds","time"
+"ice_model_Pfa_ui", 0, "seconds", 1, "seconds","time"
+"ice_model_Pfa_vi", 0, "seconds", 1, "seconds","time"
+"ice_model_RAIN", 0, "seconds", 1, "seconds","time"
+"ice_model_RUNOFF", 0, "seconds", 1, "seconds","time"
+"ice_model_RUNOFF_HFLX", 0, "seconds", 1, "seconds","time"
+"ice_model_SALTF", 0, "seconds", 1, "seconds","time"
+"ice_model_SH", 0, "seconds", 1, "seconds","time"
+"ice_model_SIGI", 0, "seconds", 1, "seconds","time"
+"ice_model_SIGII", 0, "seconds", 1, "seconds","time"
+"ice_model_SLP", 0, "seconds", 1, "seconds","time"
+"ice_model_SN2IC", 0, "seconds", 1, "seconds","time"
+"ice_model_SNOWFL", 0, "seconds", 1, "seconds","time"
+"ice_model_SSH", 0, "seconds", 1, "seconds","time"
+"ice_model_SSS", 0, "seconds", 1, "seconds","time"
+"ice_model_SST", 0, "seconds", 1, "seconds","time"
+"ice_model_STRENGTH", 0, "seconds", 1, "seconds","time"
+"ice_model_STRENGTH_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_STREN_0", 0, "seconds", 1, "seconds","time"
+"ice_model_SW", 0, "seconds", 1, "seconds","time"
+"ice_model_SWDN", 0, "seconds", 1, "seconds","time"
+"ice_model_SW_NIR_DIF", 0, "seconds", 1, "seconds","time"
+"ice_model_SW_NIR_DIR", 0, "seconds", 1, "seconds","time"
+"ice_model_SW_VIS", 0, "seconds", 1, "seconds","time"
+"ice_model_SW_VIS_DIF", 0, "seconds", 1, "seconds","time"
+"ice_model_SW_VIS_DIR", 0, "seconds", 1, "seconds","time"
+"ice_model_S_bulkice", 0, "seconds", 1, "seconds","time"
+"ice_model_Sal1", 0, "seconds", 1, "seconds","time"
+"ice_model_Sal2", 0, "seconds", 1, "seconds","time"
+"ice_model_Sal3", 0, "seconds", 1, "seconds","time"
+"ice_model_Sal4", 0, "seconds", 1, "seconds","time"
+"ice_model_T1", 0, "seconds", 1, "seconds","time"
+"ice_model_T2", 0, "seconds", 1, "seconds","time"
+"ice_model_T3", 0, "seconds", 1, "seconds","time"
+"ice_model_T4", 0, "seconds", 1, "seconds","time"
+"ice_model_TMELT", 0, "seconds", 1, "seconds","time"
+"ice_model_TS", 0, "seconds", 1, "seconds","time"
+"ice_model_TSN", 0, "seconds", 1, "seconds","time"
+"ice_model_T_bulkice", 0, "seconds", 1, "seconds","time"
+"ice_model_UI", 0, "seconds", 1, "seconds","time"
+"ice_model_UO", 0, "seconds", 1, "seconds","time"
+"ice_model_VI", 0, "seconds", 1, "seconds","time"
+"ice_model_VO", 0, "seconds", 1, "seconds","time"
+"ice_model_XPRT", 0, "seconds", 1, "seconds","time"
+"ice_model_alb_nir_dif", 0, "seconds", 1, "seconds","time"
+"ice_model_alb_nir_dir", 0, "seconds", 1, "seconds","time"
+"ice_model_alb_vis_dif", 0, "seconds", 1, "seconds","time"
+"ice_model_alb_vis_dir", 0, "seconds", 1, "seconds","time"
+"ice_model_coszen", 0, "seconds", 1, "seconds","time"
+"ice_model_del_sh", 0, "seconds", 1, "seconds","time"
+"ice_model_del_sh_min", 0, "seconds", 1, "seconds","time"
+"ice_model_sh_d", 0, "seconds", 1, "seconds","time"
+"ice_model_sh_d_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_sh_s", 0, "seconds", 1, "seconds","time"
+"ice_model_sh_s_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_sh_t", 0, "seconds", 1, "seconds","time"
+"ice_model_sh_t_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_sigII_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_sigI_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_str_d", 0, "seconds", 1, "seconds","time"
+"ice_model_str_d_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_str_s", 0, "seconds", 1, "seconds","time"
+"ice_model_str_s_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_str_t", 0, "seconds", 1, "seconds","time"
+"ice_model_str_t_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_ice1", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_ice2", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_ice3", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_ice4", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_ocn", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_sfc", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_abs_snow", 0, "seconds", 1, "seconds","time"
+"ice_model_sw_pen", 0, "seconds", 1, "seconds","time"
+"ice_model_ui_hf", 0, "seconds", 1, "seconds","time"
+"ice_model_vi_hf", 0, "seconds", 1, "seconds","time"
+"ocean_model_Ahh", 0, "seconds", 1, "seconds","time"
+"ocean_model_Ahq", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_u_E0", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_u_EE", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_u_W0", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_u_WW", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_v_N0", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_v_NN", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_v_S0", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_FA_v_SS", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_ubt_EE", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_ubt_WW", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_vbt_NN", 0, "seconds", 1, "seconds","time"
+"ocean_model_BTC_vbt_SS", 0, "seconds", 1, "seconds","time"
+"ocean_model_CAu", 0, "seconds", 1, "seconds","time"
+"ocean_model_CAv", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC11", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC11_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC11_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC11_dfx", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC11_dfy", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC12", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC12_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC12_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC12_dfx", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFC12_dfy", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFL_cg1", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFL_cg1_x", 0, "seconds", 1, "seconds","time"
+"ocean_model_CFL_cg1_y", 0, "seconds", 1, "seconds","time"
+"ocean_model_Chl_opac", 0, "seconds", 1, "seconds","time"
+"ocean_model_Coriolis", 0, "seconds", 1, "seconds","time"
+"ocean_model_CoruBT", 0, "seconds", 1, "seconds","time"
+"ocean_model_CorvBT", 0, "seconds", 1, "seconds","time"
+"ocean_model_Fl_itides", 0, "seconds", 1, "seconds","time"
+"ocean_model_Fl_lowmode", 0, "seconds", 1, "seconds","time"
+"ocean_model_FrictWork", 0, "seconds", 1, "seconds","time"
+"ocean_model_FrictWorkIntz", 0, "seconds", 1, "seconds","time"
+"ocean_model_GMwork", 0, "seconds", 1, "seconds","time"
+"ocean_model_HMLu_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_HMLv_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_Heat_PmE", 0, "seconds", 1, "seconds","time"
+"ocean_model_Hs_max", 0, "seconds", 1, "seconds","time"
+"ocean_model_Hs_min", 0, "seconds", 1, "seconds","time"
+"ocean_model_Hs_used", 0, "seconds", 1, "seconds","time"
+"ocean_model_Hu_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_Hv_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_KE", 0, "seconds", 1, "seconds","time"
+"ocean_model_KE_Coradv", 0, "seconds", 1, "seconds","time"
+"ocean_model_KE_adv", 0, "seconds", 1, "seconds","time"
+"ocean_model_KE_dia", 0, "seconds", 1, "seconds","time"
+"ocean_model_KE_horvisc", 0, "seconds", 1, "seconds","time"
+"ocean_model_KE_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTH_t", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTH_t1", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTH_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTH_u1", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTH_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTH_v1", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTR_h", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTR_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_KHTR_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_BBL", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_Itidal_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_Lowmode_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_Nikurashin_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_effective", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_heat", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_interface", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_itides", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_layer", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_lowmode", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_salt", 0, "seconds", 1, "seconds","time"
+"ocean_model_Kd_shear", 0, "seconds", 1, "seconds","time"
+"ocean_model_Khh", 0, "seconds", 1, "seconds","time"
+"ocean_model_Khq", 0, "seconds", 1, "seconds","time"
+"ocean_model_L2u", 0, "seconds", 1, "seconds","time"
+"ocean_model_L2v", 0, "seconds", 1, "seconds","time"
+"ocean_model_LW", 0, "seconds", 1, "seconds","time"
+"ocean_model_LwLatSens", 0, "seconds", 1, "seconds","time"
+"ocean_model_LwLatSens_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_MLD_003", 0, "seconds", 1, "seconds","time"
+"ocean_model_MLD_0125", 0, "seconds", 1, "seconds","time"
+"ocean_model_MLD_restrat", 0, "seconds", 1, "seconds","time"
+"ocean_model_MLD_user", 0, "seconds", 1, "seconds","time"
+"ocean_model_ML_buoy_restrat", 0, "seconds", 1, "seconds","time"
+"ocean_model_MLu_restrat_time", 0, "seconds", 1, "seconds","time"
+"ocean_model_MLv_restrat_time", 0, "seconds", 1, "seconds","time"
+"ocean_model_N2", 0, "seconds", 1, "seconds","time"
+"ocean_model_N2_b", 0, "seconds", 1, "seconds","time"
+"ocean_model_N2_meanz", 0, "seconds", 1, "seconds","time"
+"ocean_model_Nb", 0, "seconds", 1, "seconds","time"
+"ocean_model_PE_detrain", 0, "seconds", 1, "seconds","time"
+"ocean_model_PE_detrain2", 0, "seconds", 1, "seconds","time"
+"ocean_model_PE_to_KE", 0, "seconds", 1, "seconds","time"
+"ocean_model_PFu", 0, "seconds", 1, "seconds","time"
+"ocean_model_PFuBT", 0, "seconds", 1, "seconds","time"
+"ocean_model_PFv", 0, "seconds", 1, "seconds","time"
+"ocean_model_PFvBT", 0, "seconds", 1, "seconds","time"
+"ocean_model_PRCmE", 0, "seconds", 1, "seconds","time"
+"ocean_model_PRCmE_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_PV", 0, "seconds", 1, "seconds","time"
+"ocean_model_Polzin_decay_scale", 0, "seconds", 1, "seconds","time"
+"ocean_model_Polzin_decay_scale_scaled", 0, "seconds", 1, "seconds","time"
+"ocean_model_RV", 0, "seconds", 1, "seconds","time"
+"ocean_model_Rayleigh_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_Rayleigh_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_Rd1", 0, "seconds", 1, "seconds","time"
+"ocean_model_Rd_dx", 0, "seconds", 1, "seconds","time"
+"ocean_model_Res_fn", 0, "seconds", 1, "seconds","time"
+"ocean_model_Rho_cv", 0, "seconds", 1, "seconds","time"
+"ocean_model_Rml", 0, "seconds", 1, "seconds","time"
+"ocean_model_SN_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_SN_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_SSH", 0, "seconds", 1, "seconds","time"
+"ocean_model_SSH_inst", 0, "seconds", 1, "seconds","time"
+"ocean_model_SSS", 0, "seconds", 1, "seconds","time"
+"ocean_model_SSS_sq", 0, "seconds", 1, "seconds","time"
+"ocean_model_SST", 0, "seconds", 1, "seconds","time"
+"ocean_model_SST_sq", 0, "seconds", 1, "seconds","time"
+"ocean_model_SSU", 0, "seconds", 1, "seconds","time"
+"ocean_model_SSV", 0, "seconds", 1, "seconds","time"
+"ocean_model_SW", 0, "seconds", 1, "seconds","time"
+"ocean_model_SW_pen", 0, "seconds", 1, "seconds","time"
+"ocean_model_SW_vis_pen", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_advection_xy", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_advection_xy_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_adx_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_ady_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_diffx", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_diffx_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_diffy", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_diffy_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_S_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_Sflx_dia_adv", 0, "seconds", 1, "seconds","time"
+"ocean_model_Sflx_dia_diff", 0, "seconds", 1, "seconds","time"
+"ocean_model_Sh_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_Sh_tendency_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_RiBulk", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_conv", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_conv_decay", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_conv_s2", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_itidal", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_mech_decay", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_mixing", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_pen_SW", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_shear", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_tidal", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_to_Kd", 0, "seconds", 1, "seconds","time"
+"ocean_model_TKE_wind", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_advection_xy", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_advection_xy_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_adx_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_ady_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_diffx", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_diffx_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_diffy", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_diffy_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_T_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_Tflx_dia_adv", 0, "seconds", 1, "seconds","time"
+"ocean_model_Tflx_dia_diff", 0, "seconds", 1, "seconds","time"
+"ocean_model_Th_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_Th_tendency_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_age", 0, "seconds", 1, "seconds","time"
+"ocean_model_age_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_age_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_age_dfx", 0, "seconds", 1, "seconds","time"
+"ocean_model_age_dfy", 0, "seconds", 1, "seconds","time"
+"ocean_model_area_t", 0, "seconds", 1, "seconds","time"
+"ocean_model_areacello", 0, "seconds", 1, "seconds","time"
+"ocean_model_au_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_av_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_evs", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_hfds", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_hfls", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_hfss", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_pr", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_prsn", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_rlntds", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_rsntds", 0, "seconds", 1, "seconds","time"
+"ocean_model_ave_wfo", 0, "seconds", 1, "seconds","time"
+"ocean_model_bbl_thick_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_bbl_thick_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_cg1", 0, "seconds", 1, "seconds","time"
+"ocean_model_col_height", 0, "seconds", 1, "seconds","time"
+"ocean_model_col_mass", 0, "seconds", 1, "seconds","time"
+"ocean_model_dKE_dt", 0, "seconds", 1, "seconds","time"
+"ocean_model_deficit_ratio", 0, "seconds", 1, "seconds","time"
+"ocean_model_depth_ocean", 0, "seconds", 1, "seconds","time"
+"ocean_model_deptho", 0, "seconds", 1, "seconds","time"
+"ocean_model_dhdt", 0, "seconds", 1, "seconds","time"
+"ocean_model_diff_work", 0, "seconds", 1, "seconds","time"
+"ocean_model_diffu", 0, "seconds", 1, "seconds","time"
+"ocean_model_diffv", 0, "seconds", 1, "seconds","time"
+"ocean_model_difmxybo", 0, "seconds", 1, "seconds","time"
+"ocean_model_difmxylo", 0, "seconds", 1, "seconds","time"
+"ocean_model_diftrblo", 0, "seconds", 1, "seconds","time"
+"ocean_model_diftrelo", 0, "seconds", 1, "seconds","time"
+"ocean_model_difvho", 0, "seconds", 1, "seconds","time"
+"ocean_model_difvso", 0, "seconds", 1, "seconds","time"
+"ocean_model_dispkexyfo", 0, "seconds", 1, "seconds","time"
+"ocean_model_du_dt_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_dudt", 0, "seconds", 1, "seconds","time"
+"ocean_model_dudt_dia", 0, "seconds", 1, "seconds","time"
+"ocean_model_dv_dt_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_dvdt", 0, "seconds", 1, "seconds","time"
+"ocean_model_dvdt_dia", 0, "seconds", 1, "seconds","time"
+"ocean_model_dxCu", 0, "seconds", 1, "seconds","time"
+"ocean_model_dxCv", 0, "seconds", 1, "seconds","time"
+"ocean_model_dxt", 0, "seconds", 1, "seconds","time"
+"ocean_model_dyCu", 0, "seconds", 1, "seconds","time"
+"ocean_model_dyCv", 0, "seconds", 1, "seconds","time"
+"ocean_model_dyt", 0, "seconds", 1, "seconds","time"
+"ocean_model_e", 0, "seconds", 1, "seconds","time"
+"ocean_model_e_D", 0, "seconds", 1, "seconds","time"
+"ocean_model_e_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_ea", 0, "seconds", 1, "seconds","time"
+"ocean_model_eb", 0, "seconds", 1, "seconds","time"
+"ocean_model_eta_bt", 0, "seconds", 1, "seconds","time"
+"ocean_model_eta_cor", 0, "seconds", 1, "seconds","time"
+"ocean_model_eta_hifreq", 0, "seconds", 1, "seconds","time"
+"ocean_model_eta_pred_hifreq", 0, "seconds", 1, "seconds","time"
+"ocean_model_eta_st", 0, "seconds", 1, "seconds","time"
+"ocean_model_evap", 0, "seconds", 1, "seconds","time"
+"ocean_model_evap_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_evs", 0, "seconds", 1, "seconds","time"
+"ocean_model_ficeberg", 0, "seconds", 1, "seconds","time"
+"ocean_model_fprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_fprec_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_frazil", 0, "seconds", 1, "seconds","time"
+"ocean_model_frazil_heat_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_frazil_heat_tendency_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_frazil_temp_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_frhatu", 0, "seconds", 1, "seconds","time"
+"ocean_model_frhatu1", 0, "seconds", 1, "seconds","time"
+"ocean_model_frhatv", 0, "seconds", 1, "seconds","time"
+"ocean_model_frhatv1", 0, "seconds", 1, "seconds","time"
+"ocean_model_friver", 0, "seconds", 1, "seconds","time"
+"ocean_model_frunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_gKEu", 0, "seconds", 1, "seconds","time"
+"ocean_model_gKEv", 0, "seconds", 1, "seconds","time"
+"ocean_model_geo_heat", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolat", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolat_c", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolat_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolat_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolon", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolon_c", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolon_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_geolon_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_gtot_e", 0, "seconds", 1, "seconds","time"
+"ocean_model_gtot_n", 0, "seconds", 1, "seconds","time"
+"ocean_model_gtot_s", 0, "seconds", 1, "seconds","time"
+"ocean_model_gtot_w", 0, "seconds", 1, "seconds","time"
+"ocean_model_h", 0, "seconds", 1, "seconds","time"
+"ocean_model_h_ML", 0, "seconds", 1, "seconds","time"
+"ocean_model_h_miss_ML", 0, "seconds", 1, "seconds","time"
+"ocean_model_h_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_h_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_cond", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_fprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_frunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_lprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_lrunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_massin", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_massout", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_surfwater", 0, "seconds", 1, "seconds","time"
+"ocean_model_heat_content_vprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfds", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfevapds", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfgeou", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfibthermds", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfls", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfrainds", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfrunoffds", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfsifrazil", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfsnthermds", 0, "seconds", 1, "seconds","time"
+"ocean_model_hfss", 0, "seconds", 1, "seconds","time"
+"ocean_model_internal_heat", 0, "seconds", 1, "seconds","time"
+"ocean_model_kv_bbl_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_kv_bbl_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_lat_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_latent", 0, "seconds", 1, "seconds","time"
+"ocean_model_latent_evap", 0, "seconds", 1, "seconds","time"
+"ocean_model_latent_fprec_diag", 0, "seconds", 1, "seconds","time"
+"ocean_model_latent_frunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_lprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_lprec_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_lrunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_lw_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_mass_wt", 0, "seconds", 1, "seconds","time"
+"ocean_model_masscello", 0, "seconds", 1, "seconds","time"
+"ocean_model_masso", 0, "seconds", 1, "seconds","time"
+"ocean_model_maxTKE", 0, "seconds", 1, "seconds","time"
+"ocean_model_mlotst", 0, "seconds", 1, "seconds","time"
+"ocean_model_mlotstsq", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_fresh_water_global_adjustment", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_fresh_water_global_scaling", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_heat_coupler", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_heat_coupler_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_heat_surface", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_heat_surface_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_massin", 0, "seconds", 1, "seconds","time"
+"ocean_model_net_massout", 0, "seconds", 1, "seconds","time"
+"ocean_model_neutral_slope_x", 0, "seconds", 1, "seconds","time"
+"ocean_model_neutral_slope_y", 0, "seconds", 1, "seconds","time"
+"ocean_model_nkml_visc_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_nkml_visc_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_obvfsq", 0, "seconds", 1, "seconds","time"
+"ocean_model_opac_1", 0, "seconds", 1, "seconds","time"
+"ocean_model_opac_2", 0, "seconds", 1, "seconds","time"
+"ocean_model_opac_3", 0, "seconds", 1, "seconds","time"
+"ocean_model_opottempmint", 0, "seconds", 1, "seconds","time"
+"ocean_model_opottemptend", 0, "seconds", 1, "seconds","time"
+"ocean_model_opottemptend_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_osalttend", 0, "seconds", 1, "seconds","time"
+"ocean_model_osalttend_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_p_surf", 0, "seconds", 1, "seconds","time"
+"ocean_model_pbo", 0, "seconds", 1, "seconds","time"
+"ocean_model_pr", 0, "seconds", 1, "seconds","time"
+"ocean_model_precip", 0, "seconds", 1, "seconds","time"
+"ocean_model_precip_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_prsn", 0, "seconds", 1, "seconds","time"
+"ocean_model_pso", 0, "seconds", 1, "seconds","time"
+"ocean_model_rhoinsitu", 0, "seconds", 1, "seconds","time"
+"ocean_model_rhopot0", 0, "seconds", 1, "seconds","time"
+"ocean_model_rhopot2", 0, "seconds", 1, "seconds","time"
+"ocean_model_rlntds", 0, "seconds", 1, "seconds","time"
+"ocean_model_rsntds", 0, "seconds", 1, "seconds","time"
+"ocean_model_rvxu", 0, "seconds", 1, "seconds","time"
+"ocean_model_rvxv", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_deficit", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_flux", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_flux_global_restoring_adjustment", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_flux_global_restoring_scaling", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_flux_in", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_flux_restore", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_int", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_layer_ave", 0, "seconds", 1, "seconds","time"
+"ocean_model_salt_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_sens_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_sensible", 0, "seconds", 1, "seconds","time"
+"ocean_model_sfdsi", 0, "seconds", 1, "seconds","time"
+"ocean_model_so", 0, "seconds", 1, "seconds","time"
+"ocean_model_sob", 0, "seconds", 1, "seconds","time"
+"ocean_model_soga", 0, "seconds", 1, "seconds","time"
+"ocean_model_somint", 0, "seconds", 1, "seconds","time"
+"ocean_model_sos", 0, "seconds", 1, "seconds","time"
+"ocean_model_sosga", 0, "seconds", 1, "seconds","time"
+"ocean_model_sossq", 0, "seconds", 1, "seconds","time"
+"ocean_model_speed", 0, "seconds", 1, "seconds","time"
+"ocean_model_ssh_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_sss_global", 0, "seconds", 1, "seconds","time"
+"ocean_model_sst_global", 0, "seconds", 1, "seconds","time"
+"ocean_model_subML_N2", 0, "seconds", 1, "seconds","time"
+"ocean_model_sw_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_tauuo", 0, "seconds", 1, "seconds","time"
+"ocean_model_tauvo", 0, "seconds", 1, "seconds","time"
+"ocean_model_taux", 0, "seconds", 1, "seconds","time"
+"ocean_model_taux_bot", 0, "seconds", 1, "seconds","time"
+"ocean_model_tauy", 0, "seconds", 1, "seconds","time"
+"ocean_model_tauy_bot", 0, "seconds", 1, "seconds","time"
+"ocean_model_temp", 0, "seconds", 1, "seconds","time"
+"ocean_model_temp_int", 0, "seconds", 1, "seconds","time"
+"ocean_model_temp_layer_ave", 0, "seconds", 1, "seconds","time"
+"ocean_model_temp_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_thetao", 0, "seconds", 1, "seconds","time"
+"ocean_model_thetaoga", 0, "seconds", 1, "seconds","time"
+"ocean_model_thkcello", 0, "seconds", 1, "seconds","time"
+"ocean_model_tnkebto", 0, "seconds", 1, "seconds","time"
+"ocean_model_tob", 0, "seconds", 1, "seconds","time"
+"ocean_model_tos", 0, "seconds", 1, "seconds","time"
+"ocean_model_tosga", 0, "seconds", 1, "seconds","time"
+"ocean_model_tossq", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_LwLatSens", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_PRCmE", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_evap", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_evs", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_ficeberg", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_fprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_friver", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_frunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_cond", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_fprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_frunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_lprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_lrunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_massin", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_massout", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_surfwater", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_heat_content_vprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfevapds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfibthermds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfls", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfrainds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfrunoffds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfsnthermds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfsolidrunoffds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_hfss", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lat", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lat_evap", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lat_fprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lat_frunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lrunoff", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_lw", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_net_heat_coupler", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_net_heat_surface", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_net_massin", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_net_massout", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_pr", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_precip", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_prsn", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_rlntds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_rsntds", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_salt_Flux_In", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_salt_Flux_Restore", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_salt_flux", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_sens", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_sfdsi", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_sw", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_vprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_total_wfo", 0, "seconds", 1, "seconds","time"
+"ocean_model_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_u_BT_accel", 0, "seconds", 1, "seconds","time"
+"ocean_model_u_accel_bt", 0, "seconds", 1, "seconds","time"
+"ocean_model_u_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_uav", 0, "seconds", 1, "seconds","time"
+"ocean_model_ubt", 0, "seconds", 1, "seconds","time"
+"ocean_model_ubt_hifreq", 0, "seconds", 1, "seconds","time"
+"ocean_model_ubt_st", 0, "seconds", 1, "seconds","time"
+"ocean_model_ubtav", 0, "seconds", 1, "seconds","time"
+"ocean_model_ubtforce", 0, "seconds", 1, "seconds","time"
+"ocean_model_udml_restrat", 0, "seconds", 1, "seconds","time"
+"ocean_model_uh", 0, "seconds", 1, "seconds","time"
+"ocean_model_uhGM", 0, "seconds", 1, "seconds","time"
+"ocean_model_uhGM_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_uh_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_uhbt", 0, "seconds", 1, "seconds","time"
+"ocean_model_uhbt0", 0, "seconds", 1, "seconds","time"
+"ocean_model_uhbt_hifreq", 0, "seconds", 1, "seconds","time"
+"ocean_model_uhml", 0, "seconds", 1, "seconds","time"
+"ocean_model_umo", 0, "seconds", 1, "seconds","time"
+"ocean_model_umo_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_uo", 0, "seconds", 1, "seconds","time"
+"ocean_model_ustar", 0, "seconds", 1, "seconds","time"
+"ocean_model_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_v_BT_accel", 0, "seconds", 1, "seconds","time"
+"ocean_model_v_accel_bt", 0, "seconds", 1, "seconds","time"
+"ocean_model_v_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_vav", 0, "seconds", 1, "seconds","time"
+"ocean_model_vbt", 0, "seconds", 1, "seconds","time"
+"ocean_model_vbt_hifreq", 0, "seconds", 1, "seconds","time"
+"ocean_model_vbt_st", 0, "seconds", 1, "seconds","time"
+"ocean_model_vbtav", 0, "seconds", 1, "seconds","time"
+"ocean_model_vbtforce", 0, "seconds", 1, "seconds","time"
+"ocean_model_vdml_restrat", 0, "seconds", 1, "seconds","time"
+"ocean_model_vh", 0, "seconds", 1, "seconds","time"
+"ocean_model_vhGM", 0, "seconds", 1, "seconds","time"
+"ocean_model_vhGM_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_vh_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_vhbt", 0, "seconds", 1, "seconds","time"
+"ocean_model_vhbt0", 0, "seconds", 1, "seconds","time"
+"ocean_model_vhbt_hifreq", 0, "seconds", 1, "seconds","time"
+"ocean_model_vhml", 0, "seconds", 1, "seconds","time"
+"ocean_model_visc_rem_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_visc_rem_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_vmo", 0, "seconds", 1, "seconds","time"
+"ocean_model_vmo_2d", 0, "seconds", 1, "seconds","time"
+"ocean_model_vo", 0, "seconds", 1, "seconds","time"
+"ocean_model_volo", 0, "seconds", 1, "seconds","time"
+"ocean_model_vprec", 0, "seconds", 1, "seconds","time"
+"ocean_model_vprec_global_adjustment", 0, "seconds", 1, "seconds","time"
+"ocean_model_vprec_global_scaling", 0, "seconds", 1, "seconds","time"
+"ocean_model_vrec_ga", 0, "seconds", 1, "seconds","time"
+"ocean_model_wd", 0, "seconds", 1, "seconds","time"
+"ocean_model_wet", 0, "seconds", 1, "seconds","time"
+"ocean_model_wet_c", 0, "seconds", 1, "seconds","time"
+"ocean_model_wet_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_wet_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_wfo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_CFC11", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_CFC11_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_CFC12", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_CFC12_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_Kd", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_Kd_itides", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_N2", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_Sflx_dia_adv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_Sflx_dia_dif", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_Tflx_dia_adv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_Tflx_dia_dif", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_age", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_age_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Ahh", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CAu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CAv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC11", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC11_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC11_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC11_dfx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC11_dfy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC12", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC12_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC12_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC12_dfx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_CFC12_dfy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_FrictWork", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Hu_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Hv_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KE", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KE_Coradv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KE_adv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KE_dia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KE_horvisc", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KE_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_KHTH_t", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Kd_Itidal_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Kd_Lowmode_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Kd_Nikurashin_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Kd_Work", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Kd_effective", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Kd_layer", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Khh", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_PE_to_KE", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_PFu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_PFv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Rayleigh_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Rayleigh_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Rho_cv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Rml", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_S_advection_xy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_S_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_S_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_S_diffx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_S_diffy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_S_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Sh_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_T_advection_xy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_T_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_T_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_T_diffx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_T_diffy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_T_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_Th_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_age", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_age_adx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_age_ady", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_age_dfx", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_age_dfy", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dKE_dt", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dhdt", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_diffu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_diffv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_difmxybo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_difmxylo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_diftrblo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_du_dt_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dudt", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dudt_dia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dv_dt_visc", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dvdt", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_dvdt_dia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_ea", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_eb", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_frazil_heat_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_frazil_temp_tendency", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_frhatu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_frhatu1", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_frhatv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_frhatv1", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_gKEu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_gKEv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_h", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_h_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_h_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_masscello", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_maxTKE", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_opac_1", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_opac_2", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_opac_3", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_opottemptend", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_osalttend", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_rhoinsitu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_rhopot0", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_rhopot2", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_rvxu", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_rvxv", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_salt", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_salt_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_so", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_temp", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_temp_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_thetao", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_thkcello", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_u_BT_accel", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_u_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uav", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uh", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uhGM", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uhGM_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uh_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uhml", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_umo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_uo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_v_BT_accel", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_v_predia", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vav", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vh", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vhGM", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vhGM_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vh_rho", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vhml", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_visc_rem_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_visc_rem_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vmo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_new_vo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_salt", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_salt_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_so", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_so_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_temp", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_temp_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_thetao", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_thetao_xyave", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_u", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_uh", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_uo", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_v", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_vh", 0, "seconds", 1, "seconds","time"
+"ocean_model_z_vo", 0, "seconds", 1, "seconds","time"
+"ocean_model_zos", 0, "seconds", 1, "seconds","time"
+"ocean_model_zossq", 0, "seconds", 1, "seconds","time"
+"ice_model", "AGE", "AGE", "ice_model_AGE", "all",.false., "none", 2
+"ice_model", "ALB", "ALB", "ice_model_ALB", "all",.false., "none", 2
+"ice_model", "BHEAT", "BHEAT", "ice_model_BHEAT", "all",.false., "none", 2
+"ice_model", "BMELT", "BMELT", "ice_model_BMELT", "all",.false., "none", 2
+"ice_model", "BSNK", "BSNK", "ice_model_BSNK", "all",.false., "none", 2
+"ice_model", "CALVING", "CALVING", "ice_model_CALVING", "all",.false., "none", 2
+"ice_model", "CALVING_HFLX", "CALVING_HFLX", "ice_model_CALVING_HFLX", "all",.false., "none", 2
+"ice_model", "CI_hf", "CI_hf", "ice_model_CI_hf", "all",.false., "none", 2
+"ice_model", "CI_proj", "CI_proj", "ice_model_CI_proj", "all",.false., "none", 2
+"ice_model", "CI_tot", "CI_tot", "ice_model_CI_tot", "all",.false., "none", 2
+"ice_model", "CN", "CN", "ice_model_CN", "all",.false., "none", 2
+"ice_model", "E2MELT", "E2MELT", "ice_model_E2MELT", "all",.false., "none", 2
+"ice_model", "EVAP", "EVAP", "ice_model_EVAP", "all",.false., "none", 2
+"ice_model", "EXT", "EXT", "ice_model_EXT", "all",.false., "none", 2
+"ice_model", "FA_X", "FA_X", "ice_model_FA_X", "all",.false., "none", 2
+"ice_model", "FA_Y", "FA_Y", "ice_model_FA_Y", "all",.false., "none", 2
+"ice_model", "FC_X", "FC_X", "ice_model_FC_X", "all",.false., "none", 2
+"ice_model", "FC_Y", "FC_Y", "ice_model_FC_Y", "all",.false., "none", 2
+"ice_model", "FI_X", "FI_X", "ice_model_FI_X", "all",.false., "none", 2
+"ice_model", "FI_Y", "FI_Y", "ice_model_FI_Y", "all",.false., "none", 2
+"ice_model", "FI_d_X", "FI_d_X", "ice_model_FI_d_X", "all",.false., "none", 2
+"ice_model", "FI_d_Y", "FI_d_Y", "ice_model_FI_d_Y", "all",.false., "none", 2
+"ice_model", "FI_s_X", "FI_s_X", "ice_model_FI_s_X", "all",.false., "none", 2
+"ice_model", "FI_s_Y", "FI_s_Y", "ice_model_FI_s_Y", "all",.false., "none", 2
+"ice_model", "FI_t_X", "FI_t_X", "ice_model_FI_t_X", "all",.false., "none", 2
+"ice_model", "FI_t_Y", "FI_t_Y", "ice_model_FI_t_Y", "all",.false., "none", 2
+"ice_model", "FP_X", "FP_X", "ice_model_FP_X", "all",.false., "none", 2
+"ice_model", "FP_Y", "FP_Y", "ice_model_FP_Y", "all",.false., "none", 2
+"ice_model", "FRAZIL", "FRAZIL", "ice_model_FRAZIL", "all",.false., "none", 2
+"ice_model", "FW_X", "FW_X", "ice_model_FW_X", "all",.false., "none", 2
+"ice_model", "FW_Y", "FW_Y", "ice_model_FW_Y", "all",.false., "none", 2
+"ice_model", "HI", "HI", "ice_model_HI", "all",.false., "none", 2
+"ice_model", "HS", "HS", "ice_model_HS", "all",.false., "none", 2
+"ice_model", "IX_TRANS", "IX_TRANS", "ice_model_IX_TRANS", "all",.false., "none", 2
+"ice_model", "IY_TRANS", "IY_TRANS", "ice_model_IY_TRANS", "all",.false., "none", 2
+"ice_model", "LH", "LH", "ice_model_LH", "all",.false., "none", 2
+"ice_model", "LSNK", "LSNK", "ice_model_LSNK", "all",.false., "none", 2
+"ice_model", "LSRC", "LSRC", "ice_model_LSRC", "all",.false., "none", 2
+"ice_model", "LW", "LW", "ice_model_LW", "all",.false., "none", 2
+"ice_model", "LWDN", "LWDN", "ice_model_LWDN", "all",.false., "none", 2
+"ice_model", "MI", "MI", "ice_model_MI", "all",.false., "none", 2
+"ice_model", "MIB", "MIB", "ice_model_MIB", "all",.false., "none", 2
+"ice_model", "MIS_tot", "MIS_tot", "ice_model_MIS_tot", "all",.false., "none", 2
+"ice_model", "MI_U", "MI_U", "ice_model_MI_U", "all",.false., "none", 2
+"ice_model", "MI_V", "MI_V", "ice_model_MI_V", "all",.false., "none", 2
+"ice_model", "Pfa_ui", "Pfa_ui", "ice_model_Pfa_ui", "all",.false., "none", 2
+"ice_model", "Pfa_vi", "Pfa_vi", "ice_model_Pfa_vi", "all",.false., "none", 2
+"ice_model", "RAIN", "RAIN", "ice_model_RAIN", "all",.false., "none", 2
+"ice_model", "RUNOFF", "RUNOFF", "ice_model_RUNOFF", "all",.false., "none", 2
+"ice_model", "RUNOFF_HFLX", "RUNOFF_HFLX", "ice_model_RUNOFF_HFLX", "all",.false., "none", 2
+"ice_model", "SALTF", "SALTF", "ice_model_SALTF", "all",.false., "none", 2
+"ice_model", "SH", "SH", "ice_model_SH", "all",.false., "none", 2
+"ice_model", "SIGI", "SIGI", "ice_model_SIGI", "all",.false., "none", 2
+"ice_model", "SIGII", "SIGII", "ice_model_SIGII", "all",.false., "none", 2
+"ice_model", "SLP", "SLP", "ice_model_SLP", "all",.false., "none", 2
+"ice_model", "SN2IC", "SN2IC", "ice_model_SN2IC", "all",.false., "none", 2
+"ice_model", "SNOWFL", "SNOWFL", "ice_model_SNOWFL", "all",.false., "none", 2
+"ice_model", "SSH", "SSH", "ice_model_SSH", "all",.false., "none", 2
+"ice_model", "SSS", "SSS", "ice_model_SSS", "all",.false., "none", 2
+"ice_model", "SST", "SST", "ice_model_SST", "all",.false., "none", 2
+"ice_model", "STRENGTH", "STRENGTH", "ice_model_STRENGTH", "all",.false., "none", 2
+"ice_model", "STRENGTH_hf", "STRENGTH_hf", "ice_model_STRENGTH_hf", "all",.false., "none", 2
+"ice_model", "STREN_0", "STREN_0", "ice_model_STREN_0", "all",.false., "none", 2
+"ice_model", "SW", "SW", "ice_model_SW", "all",.false., "none", 2
+"ice_model", "SWDN", "SWDN", "ice_model_SWDN", "all",.false., "none", 2
+"ice_model", "SW_NIR_DIF", "SW_NIR_DIF", "ice_model_SW_NIR_DIF", "all",.false., "none", 2
+"ice_model", "SW_NIR_DIR", "SW_NIR_DIR", "ice_model_SW_NIR_DIR", "all",.false., "none", 2
+"ice_model", "SW_VIS", "SW_VIS", "ice_model_SW_VIS", "all",.false., "none", 2
+"ice_model", "SW_VIS_DIF", "SW_VIS_DIF", "ice_model_SW_VIS_DIF", "all",.false., "none", 2
+"ice_model", "SW_VIS_DIR", "SW_VIS_DIR", "ice_model_SW_VIS_DIR", "all",.false., "none", 2
+"ice_model", "S_bulkice", "S_bulkice", "ice_model_S_bulkice", "all",.false., "none", 2
+"ice_model", "Sal1", "Sal1", "ice_model_Sal1", "all",.false., "none", 2
+"ice_model", "Sal2", "Sal2", "ice_model_Sal2", "all",.false., "none", 2
+"ice_model", "Sal3", "Sal3", "ice_model_Sal3", "all",.false., "none", 2
+"ice_model", "Sal4", "Sal4", "ice_model_Sal4", "all",.false., "none", 2
+"ice_model", "T1", "T1", "ice_model_T1", "all",.false., "none", 2
+"ice_model", "T2", "T2", "ice_model_T2", "all",.false., "none", 2
+"ice_model", "T3", "T3", "ice_model_T3", "all",.false., "none", 2
+"ice_model", "T4", "T4", "ice_model_T4", "all",.false., "none", 2
+"ice_model", "TMELT", "TMELT", "ice_model_TMELT", "all",.false., "none", 2
+"ice_model", "TS", "TS", "ice_model_TS", "all",.false., "none", 2
+"ice_model", "TSN", "TSN", "ice_model_TSN", "all",.false., "none", 2
+"ice_model", "T_bulkice", "T_bulkice", "ice_model_T_bulkice", "all",.false., "none", 2
+"ice_model", "UI", "UI", "ice_model_UI", "all",.false., "none", 2
+"ice_model", "UO", "UO", "ice_model_UO", "all",.false., "none", 2
+"ice_model", "VI", "VI", "ice_model_VI", "all",.false., "none", 2
+"ice_model", "VO", "VO", "ice_model_VO", "all",.false., "none", 2
+"ice_model", "XPRT", "XPRT", "ice_model_XPRT", "all",.false., "none", 2
+"ice_model", "alb_nir_dif", "alb_nir_dif", "ice_model_alb_nir_dif", "all",.false., "none", 2
+"ice_model", "alb_nir_dir", "alb_nir_dir", "ice_model_alb_nir_dir", "all",.false., "none", 2
+"ice_model", "alb_vis_dif", "alb_vis_dif", "ice_model_alb_vis_dif", "all",.false., "none", 2
+"ice_model", "alb_vis_dir", "alb_vis_dir", "ice_model_alb_vis_dir", "all",.false., "none", 2
+"ice_model", "coszen", "coszen", "ice_model_coszen", "all",.false., "none", 2
+"ice_model", "del_sh", "del_sh", "ice_model_del_sh", "all",.false., "none", 2
+"ice_model", "del_sh_min", "del_sh_min", "ice_model_del_sh_min", "all",.false., "none", 2
+"ice_model", "sh_d", "sh_d", "ice_model_sh_d", "all",.false., "none", 2
+"ice_model", "sh_d_hf", "sh_d_hf", "ice_model_sh_d_hf", "all",.false., "none", 2
+"ice_model", "sh_s", "sh_s", "ice_model_sh_s", "all",.false., "none", 2
+"ice_model", "sh_s_hf", "sh_s_hf", "ice_model_sh_s_hf", "all",.false., "none", 2
+"ice_model", "sh_t", "sh_t", "ice_model_sh_t", "all",.false., "none", 2
+"ice_model", "sh_t_hf", "sh_t_hf", "ice_model_sh_t_hf", "all",.false., "none", 2
+"ice_model", "sigII_hf", "sigII_hf", "ice_model_sigII_hf", "all",.false., "none", 2
+"ice_model", "sigI_hf", "sigI_hf", "ice_model_sigI_hf", "all",.false., "none", 2
+"ice_model", "str_d", "str_d", "ice_model_str_d", "all",.false., "none", 2
+"ice_model", "str_d_hf", "str_d_hf", "ice_model_str_d_hf", "all",.false., "none", 2
+"ice_model", "str_s", "str_s", "ice_model_str_s", "all",.false., "none", 2
+"ice_model", "str_s_hf", "str_s_hf", "ice_model_str_s_hf", "all",.false., "none", 2
+"ice_model", "str_t", "str_t", "ice_model_str_t", "all",.false., "none", 2
+"ice_model", "str_t_hf", "str_t_hf", "ice_model_str_t_hf", "all",.false., "none", 2
+"ice_model", "sw_abs_ice1", "sw_abs_ice1", "ice_model_sw_abs_ice1", "all",.false., "none", 2
+"ice_model", "sw_abs_ice2", "sw_abs_ice2", "ice_model_sw_abs_ice2", "all",.false., "none", 2
+"ice_model", "sw_abs_ice3", "sw_abs_ice3", "ice_model_sw_abs_ice3", "all",.false., "none", 2
+"ice_model", "sw_abs_ice4", "sw_abs_ice4", "ice_model_sw_abs_ice4", "all",.false., "none", 2
+"ice_model", "sw_abs_ocn", "sw_abs_ocn", "ice_model_sw_abs_ocn", "all",.false., "none", 2
+"ice_model", "sw_abs_sfc", "sw_abs_sfc", "ice_model_sw_abs_sfc", "all",.false., "none", 2
+"ice_model", "sw_abs_snow", "sw_abs_snow", "ice_model_sw_abs_snow", "all",.false., "none", 2
+"ice_model", "sw_pen", "sw_pen", "ice_model_sw_pen", "all",.false., "none", 2
+"ice_model", "ui_hf", "ui_hf", "ice_model_ui_hf", "all",.false., "none", 2
+"ice_model", "vi_hf", "vi_hf", "ice_model_vi_hf", "all",.false., "none", 2
+"ocean_model", "Ahh", "Ahh", "ocean_model_Ahh", "all",.false., "none", 2
+"ocean_model", "Ahq", "Ahq", "ocean_model_Ahq", "all",.false., "none", 2
+"ocean_model", "BTC_FA_u_E0", "BTC_FA_u_E0", "ocean_model_BTC_FA_u_E0", "all",.false., "none", 2
+"ocean_model", "BTC_FA_u_EE", "BTC_FA_u_EE", "ocean_model_BTC_FA_u_EE", "all",.false., "none", 2
+"ocean_model", "BTC_FA_u_W0", "BTC_FA_u_W0", "ocean_model_BTC_FA_u_W0", "all",.false., "none", 2
+"ocean_model", "BTC_FA_u_WW", "BTC_FA_u_WW", "ocean_model_BTC_FA_u_WW", "all",.false., "none", 2
+"ocean_model", "BTC_FA_v_N0", "BTC_FA_v_N0", "ocean_model_BTC_FA_v_N0", "all",.false., "none", 2
+"ocean_model", "BTC_FA_v_NN", "BTC_FA_v_NN", "ocean_model_BTC_FA_v_NN", "all",.false., "none", 2
+"ocean_model", "BTC_FA_v_S0", "BTC_FA_v_S0", "ocean_model_BTC_FA_v_S0", "all",.false., "none", 2
+"ocean_model", "BTC_FA_v_SS", "BTC_FA_v_SS", "ocean_model_BTC_FA_v_SS", "all",.false., "none", 2
+"ocean_model", "BTC_ubt_EE", "BTC_ubt_EE", "ocean_model_BTC_ubt_EE", "all",.false., "none", 2
+"ocean_model", "BTC_ubt_WW", "BTC_ubt_WW", "ocean_model_BTC_ubt_WW", "all",.false., "none", 2
+"ocean_model", "BTC_vbt_NN", "BTC_vbt_NN", "ocean_model_BTC_vbt_NN", "all",.false., "none", 2
+"ocean_model", "BTC_vbt_SS", "BTC_vbt_SS", "ocean_model_BTC_vbt_SS", "all",.false., "none", 2
+"ocean_model", "CAu", "CAu", "ocean_model_CAu", "all",.false., "none", 2
+"ocean_model", "CAv", "CAv", "ocean_model_CAv", "all",.false., "none", 2
+"ocean_model", "CFC11", "CFC11", "ocean_model_CFC11", "all",.false., "none", 2
+"ocean_model", "CFC11_adx", "CFC11_adx", "ocean_model_CFC11_adx", "all",.false., "none", 2
+"ocean_model", "CFC11_ady", "CFC11_ady", "ocean_model_CFC11_ady", "all",.false., "none", 2
+"ocean_model", "CFC11_dfx", "CFC11_dfx", "ocean_model_CFC11_dfx", "all",.false., "none", 2
+"ocean_model", "CFC11_dfy", "CFC11_dfy", "ocean_model_CFC11_dfy", "all",.false., "none", 2
+"ocean_model", "CFC12", "CFC12", "ocean_model_CFC12", "all",.false., "none", 2
+"ocean_model", "CFC12_adx", "CFC12_adx", "ocean_model_CFC12_adx", "all",.false., "none", 2
+"ocean_model", "CFC12_ady", "CFC12_ady", "ocean_model_CFC12_ady", "all",.false., "none", 2
+"ocean_model", "CFC12_dfx", "CFC12_dfx", "ocean_model_CFC12_dfx", "all",.false., "none", 2
+"ocean_model", "CFC12_dfy", "CFC12_dfy", "ocean_model_CFC12_dfy", "all",.false., "none", 2
+"ocean_model", "CFL_cg1", "CFL_cg1", "ocean_model_CFL_cg1", "all",.false., "none", 2
+"ocean_model", "CFL_cg1_x", "CFL_cg1_x", "ocean_model_CFL_cg1_x", "all",.false., "none", 2
+"ocean_model", "CFL_cg1_y", "CFL_cg1_y", "ocean_model_CFL_cg1_y", "all",.false., "none", 2
+"ocean_model", "Chl_opac", "Chl_opac", "ocean_model_Chl_opac", "all",.false., "none", 2
+"ocean_model", "Coriolis", "Coriolis", "ocean_model_Coriolis", "all",.false., "none", 2
+"ocean_model", "CoruBT", "CoruBT", "ocean_model_CoruBT", "all",.false., "none", 2
+"ocean_model", "CorvBT", "CorvBT", "ocean_model_CorvBT", "all",.false., "none", 2
+"ocean_model", "Fl_itides", "Fl_itides", "ocean_model_Fl_itides", "all",.false., "none", 2
+"ocean_model", "Fl_lowmode", "Fl_lowmode", "ocean_model_Fl_lowmode", "all",.false., "none", 2
+"ocean_model", "FrictWork", "FrictWork", "ocean_model_FrictWork", "all",.false., "none", 2
+"ocean_model", "FrictWorkIntz", "FrictWorkIntz", "ocean_model_FrictWorkIntz", "all",.false., "none", 2
+"ocean_model", "GMwork", "GMwork", "ocean_model_GMwork", "all",.false., "none", 2
+"ocean_model", "HMLu_visc", "HMLu_visc", "ocean_model_HMLu_visc", "all",.false., "none", 2
+"ocean_model", "HMLv_visc", "HMLv_visc", "ocean_model_HMLv_visc", "all",.false., "none", 2
+"ocean_model", "Heat_PmE", "Heat_PmE", "ocean_model_Heat_PmE", "all",.false., "none", 2
+"ocean_model", "Hs_max", "Hs_max", "ocean_model_Hs_max", "all",.false., "none", 2
+"ocean_model", "Hs_min", "Hs_min", "ocean_model_Hs_min", "all",.false., "none", 2
+"ocean_model", "Hs_used", "Hs_used", "ocean_model_Hs_used", "all",.false., "none", 2
+"ocean_model", "Hu_visc", "Hu_visc", "ocean_model_Hu_visc", "all",.false., "none", 2
+"ocean_model", "Hv_visc", "Hv_visc", "ocean_model_Hv_visc", "all",.false., "none", 2
+"ocean_model", "KE", "KE", "ocean_model_KE", "all",.false., "none", 2
+"ocean_model", "KE_Coradv", "KE_Coradv", "ocean_model_KE_Coradv", "all",.false., "none", 2
+"ocean_model", "KE_adv", "KE_adv", "ocean_model_KE_adv", "all",.false., "none", 2
+"ocean_model", "KE_dia", "KE_dia", "ocean_model_KE_dia", "all",.false., "none", 2
+"ocean_model", "KE_horvisc", "KE_horvisc", "ocean_model_KE_horvisc", "all",.false., "none", 2
+"ocean_model", "KE_visc", "KE_visc", "ocean_model_KE_visc", "all",.false., "none", 2
+"ocean_model", "KHTH_t", "KHTH_t", "ocean_model_KHTH_t", "all",.false., "none", 2
+"ocean_model", "KHTH_t1", "KHTH_t1", "ocean_model_KHTH_t1", "all",.false., "none", 2
+"ocean_model", "KHTH_u", "KHTH_u", "ocean_model_KHTH_u", "all",.false., "none", 2
+"ocean_model", "KHTH_u1", "KHTH_u1", "ocean_model_KHTH_u1", "all",.false., "none", 2
+"ocean_model", "KHTH_v", "KHTH_v", "ocean_model_KHTH_v", "all",.false., "none", 2
+"ocean_model", "KHTH_v1", "KHTH_v1", "ocean_model_KHTH_v1", "all",.false., "none", 2
+"ocean_model", "KHTR_h", "KHTR_h", "ocean_model_KHTR_h", "all",.false., "none", 2
+"ocean_model", "KHTR_u", "KHTR_u", "ocean_model_KHTR_u", "all",.false., "none", 2
+"ocean_model", "KHTR_v", "KHTR_v", "ocean_model_KHTR_v", "all",.false., "none", 2
+"ocean_model", "Kd_BBL", "Kd_BBL", "ocean_model_Kd_BBL", "all",.false., "none", 2
+"ocean_model", "Kd_Itidal_Work", "Kd_Itidal_Work", "ocean_model_Kd_Itidal_Work", "all",.false., "none", 2
+"ocean_model", "Kd_Lowmode_Work", "Kd_Lowmode_Work", "ocean_model_Kd_Lowmode_Work", "all",.false., "none", 2
+"ocean_model", "Kd_Nikurashin_Work", "Kd_Nikurashin_Work", "ocean_model_Kd_Nikurashin_Work", "all",.false., "none", 2
+"ocean_model", "Kd_Work", "Kd_Work", "ocean_model_Kd_Work", "all",.false., "none", 2
+"ocean_model", "Kd_effective", "Kd_effective", "ocean_model_Kd_effective", "all",.false., "none", 2
+"ocean_model", "Kd_heat", "Kd_heat", "ocean_model_Kd_heat", "all",.false., "none", 2
+"ocean_model", "Kd_interface", "Kd_interface", "ocean_model_Kd_interface", "all",.false., "none", 2
+"ocean_model", "Kd_itides", "Kd_itides", "ocean_model_Kd_itides", "all",.false., "none", 2
+"ocean_model", "Kd_layer", "Kd_layer", "ocean_model_Kd_layer", "all",.false., "none", 2
+"ocean_model", "Kd_lowmode", "Kd_lowmode", "ocean_model_Kd_lowmode", "all",.false., "none", 2
+"ocean_model", "Kd_salt", "Kd_salt", "ocean_model_Kd_salt", "all",.false., "none", 2
+"ocean_model", "Kd_shear", "Kd_shear", "ocean_model_Kd_shear", "all",.false., "none", 2
+"ocean_model", "Khh", "Khh", "ocean_model_Khh", "all",.false., "none", 2
+"ocean_model", "Khq", "Khq", "ocean_model_Khq", "all",.false., "none", 2
+"ocean_model", "L2u", "L2u", "ocean_model_L2u", "all",.false., "none", 2
+"ocean_model", "L2v", "L2v", "ocean_model_L2v", "all",.false., "none", 2
+"ocean_model", "LW", "LW", "ocean_model_LW", "all",.false., "none", 2
+"ocean_model", "LwLatSens", "LwLatSens", "ocean_model_LwLatSens", "all",.false., "none", 2
+"ocean_model", "LwLatSens_ga", "LwLatSens_ga", "ocean_model_LwLatSens_ga", "all",.false., "none", 2
+"ocean_model", "MLD_003", "MLD_003", "ocean_model_MLD_003", "all",.false., "none", 2
+"ocean_model", "MLD_0125", "MLD_0125", "ocean_model_MLD_0125", "all",.false., "none", 2
+"ocean_model", "MLD_restrat", "MLD_restrat", "ocean_model_MLD_restrat", "all",.false., "none", 2
+"ocean_model", "MLD_user", "MLD_user", "ocean_model_MLD_user", "all",.false., "none", 2
+"ocean_model", "ML_buoy_restrat", "ML_buoy_restrat", "ocean_model_ML_buoy_restrat", "all",.false., "none", 2
+"ocean_model", "MLu_restrat_time", "MLu_restrat_time", "ocean_model_MLu_restrat_time", "all",.false., "none", 2
+"ocean_model", "MLv_restrat_time", "MLv_restrat_time", "ocean_model_MLv_restrat_time", "all",.false., "none", 2
+"ocean_model", "N2", "N2", "ocean_model_N2", "all",.false., "none", 2
+"ocean_model", "N2_b", "N2_b", "ocean_model_N2_b", "all",.false., "none", 2
+"ocean_model", "N2_meanz", "N2_meanz", "ocean_model_N2_meanz", "all",.false., "none", 2
+"ocean_model", "Nb", "Nb", "ocean_model_Nb", "all",.false., "none", 2
+"ocean_model", "PE_detrain", "PE_detrain", "ocean_model_PE_detrain", "all",.false., "none", 2
+"ocean_model", "PE_detrain2", "PE_detrain2", "ocean_model_PE_detrain2", "all",.false., "none", 2
+"ocean_model", "PE_to_KE", "PE_to_KE", "ocean_model_PE_to_KE", "all",.false., "none", 2
+"ocean_model", "PFu", "PFu", "ocean_model_PFu", "all",.false., "none", 2
+"ocean_model", "PFuBT", "PFuBT", "ocean_model_PFuBT", "all",.false., "none", 2
+"ocean_model", "PFv", "PFv", "ocean_model_PFv", "all",.false., "none", 2
+"ocean_model", "PFvBT", "PFvBT", "ocean_model_PFvBT", "all",.false., "none", 2
+"ocean_model", "PRCmE", "PRCmE", "ocean_model_PRCmE", "all",.false., "none", 2
+"ocean_model", "PRCmE_ga", "PRCmE_ga", "ocean_model_PRCmE_ga", "all",.false., "none", 2
+"ocean_model", "PV", "PV", "ocean_model_PV", "all",.false., "none", 2
+"ocean_model", "Polzin_decay_scale", "Polzin_decay_scale", "ocean_model_Polzin_decay_scale", "all",.false., "none", 2
+"ocean_model", "Polzin_decay_scale_scaled", "Polzin_decay_scale_scaled", "ocean_model_Polzin_decay_scale_scaled", "all",.false., "none", 2
+"ocean_model", "RV", "RV", "ocean_model_RV", "all",.false., "none", 2
+"ocean_model", "Rayleigh_u", "Rayleigh_u", "ocean_model_Rayleigh_u", "all",.false., "none", 2
+"ocean_model", "Rayleigh_v", "Rayleigh_v", "ocean_model_Rayleigh_v", "all",.false., "none", 2
+"ocean_model", "Rd1", "Rd1", "ocean_model_Rd1", "all",.false., "none", 2
+"ocean_model", "Rd_dx", "Rd_dx", "ocean_model_Rd_dx", "all",.false., "none", 2
+"ocean_model", "Res_fn", "Res_fn", "ocean_model_Res_fn", "all",.false., "none", 2
+"ocean_model", "Rho_cv", "Rho_cv", "ocean_model_Rho_cv", "all",.false., "none", 2
+"ocean_model", "Rml", "Rml", "ocean_model_Rml", "all",.false., "none", 2
+"ocean_model", "SN_u", "SN_u", "ocean_model_SN_u", "all",.false., "none", 2
+"ocean_model", "SN_v", "SN_v", "ocean_model_SN_v", "all",.false., "none", 2
+"ocean_model", "SSH", "SSH", "ocean_model_SSH", "all",.false., "none", 2
+"ocean_model", "SSH_inst", "SSH_inst", "ocean_model_SSH_inst", "all",.false., "none", 2
+"ocean_model", "SSS", "SSS", "ocean_model_SSS", "all",.false., "none", 2
+"ocean_model", "SSS_sq", "SSS_sq", "ocean_model_SSS_sq", "all",.false., "none", 2
+"ocean_model", "SST", "SST", "ocean_model_SST", "all",.false., "none", 2
+"ocean_model", "SST_sq", "SST_sq", "ocean_model_SST_sq", "all",.false., "none", 2
+"ocean_model", "SSU", "SSU", "ocean_model_SSU", "all",.false., "none", 2
+"ocean_model", "SSV", "SSV", "ocean_model_SSV", "all",.false., "none", 2
+"ocean_model", "SW", "SW", "ocean_model_SW", "all",.false., "none", 2
+"ocean_model", "SW_pen", "SW_pen", "ocean_model_SW_pen", "all",.false., "none", 2
+"ocean_model", "SW_vis_pen", "SW_vis_pen", "ocean_model_SW_vis_pen", "all",.false., "none", 2
+"ocean_model", "S_advection_xy", "S_advection_xy", "ocean_model_S_advection_xy", "all",.false., "none", 2
+"ocean_model", "S_advection_xy_2d", "S_advection_xy_2d", "ocean_model_S_advection_xy_2d", "all",.false., "none", 2
+"ocean_model", "S_adx", "S_adx", "ocean_model_S_adx", "all",.false., "none", 2
+"ocean_model", "S_adx_2d", "S_adx_2d", "ocean_model_S_adx_2d", "all",.false., "none", 2
+"ocean_model", "S_ady", "S_ady", "ocean_model_S_ady", "all",.false., "none", 2
+"ocean_model", "S_ady_2d", "S_ady_2d", "ocean_model_S_ady_2d", "all",.false., "none", 2
+"ocean_model", "S_diffx", "S_diffx", "ocean_model_S_diffx", "all",.false., "none", 2
+"ocean_model", "S_diffx_2d", "S_diffx_2d", "ocean_model_S_diffx_2d", "all",.false., "none", 2
+"ocean_model", "S_diffy", "S_diffy", "ocean_model_S_diffy", "all",.false., "none", 2
+"ocean_model", "S_diffy_2d", "S_diffy_2d", "ocean_model_S_diffy_2d", "all",.false., "none", 2
+"ocean_model", "S_tendency", "S_tendency", "ocean_model_S_tendency", "all",.false., "none", 2
+"ocean_model", "Sflx_dia_adv", "Sflx_dia_adv", "ocean_model_Sflx_dia_adv", "all",.false., "none", 2
+"ocean_model", "Sflx_dia_diff", "Sflx_dia_diff", "ocean_model_Sflx_dia_diff", "all",.false., "none", 2
+"ocean_model", "Sh_tendency", "Sh_tendency", "ocean_model_Sh_tendency", "all",.false., "none", 2
+"ocean_model", "Sh_tendency_2d", "Sh_tendency_2d", "ocean_model_Sh_tendency_2d", "all",.false., "none", 2
+"ocean_model", "TKE_RiBulk", "TKE_RiBulk", "ocean_model_TKE_RiBulk", "all",.false., "none", 2
+"ocean_model", "TKE_conv", "TKE_conv", "ocean_model_TKE_conv", "all",.false., "none", 2
+"ocean_model", "TKE_conv_decay", "TKE_conv_decay", "ocean_model_TKE_conv_decay", "all",.false., "none", 2
+"ocean_model", "TKE_conv_s2", "TKE_conv_s2", "ocean_model_TKE_conv_s2", "all",.false., "none", 2
+"ocean_model", "TKE_itidal", "TKE_itidal", "ocean_model_TKE_itidal", "all",.false., "none", 2
+"ocean_model", "TKE_mech_decay", "TKE_mech_decay", "ocean_model_TKE_mech_decay", "all",.false., "none", 2
+"ocean_model", "TKE_mixing", "TKE_mixing", "ocean_model_TKE_mixing", "all",.false., "none", 2
+"ocean_model", "TKE_pen_SW", "TKE_pen_SW", "ocean_model_TKE_pen_SW", "all",.false., "none", 2
+"ocean_model", "TKE_shear", "TKE_shear", "ocean_model_TKE_shear", "all",.false., "none", 2
+"ocean_model", "TKE_tidal", "TKE_tidal", "ocean_model_TKE_tidal", "all",.false., "none", 2
+"ocean_model", "TKE_to_Kd", "TKE_to_Kd", "ocean_model_TKE_to_Kd", "all",.false., "none", 2
+"ocean_model", "TKE_wind", "TKE_wind", "ocean_model_TKE_wind", "all",.false., "none", 2
+"ocean_model", "T_advection_xy", "T_advection_xy", "ocean_model_T_advection_xy", "all",.false., "none", 2
+"ocean_model", "T_advection_xy_2d", "T_advection_xy_2d", "ocean_model_T_advection_xy_2d", "all",.false., "none", 2
+"ocean_model", "T_adx", "T_adx", "ocean_model_T_adx", "all",.false., "none", 2
+"ocean_model", "T_adx_2d", "T_adx_2d", "ocean_model_T_adx_2d", "all",.false., "none", 2
+"ocean_model", "T_ady", "T_ady", "ocean_model_T_ady", "all",.false., "none", 2
+"ocean_model", "T_ady_2d", "T_ady_2d", "ocean_model_T_ady_2d", "all",.false., "none", 2
+"ocean_model", "T_diffx", "T_diffx", "ocean_model_T_diffx", "all",.false., "none", 2
+"ocean_model", "T_diffx_2d", "T_diffx_2d", "ocean_model_T_diffx_2d", "all",.false., "none", 2
+"ocean_model", "T_diffy", "T_diffy", "ocean_model_T_diffy", "all",.false., "none", 2
+"ocean_model", "T_diffy_2d", "T_diffy_2d", "ocean_model_T_diffy_2d", "all",.false., "none", 2
+"ocean_model", "T_tendency", "T_tendency", "ocean_model_T_tendency", "all",.false., "none", 2
+"ocean_model", "Tflx_dia_adv", "Tflx_dia_adv", "ocean_model_Tflx_dia_adv", "all",.false., "none", 2
+"ocean_model", "Tflx_dia_diff", "Tflx_dia_diff", "ocean_model_Tflx_dia_diff", "all",.false., "none", 2
+"ocean_model", "Th_tendency", "Th_tendency", "ocean_model_Th_tendency", "all",.false., "none", 2
+"ocean_model", "Th_tendency_2d", "Th_tendency_2d", "ocean_model_Th_tendency_2d", "all",.false., "none", 2
+"ocean_model", "age", "age", "ocean_model_age", "all",.false., "none", 2
+"ocean_model", "age_adx", "age_adx", "ocean_model_age_adx", "all",.false., "none", 2
+"ocean_model", "age_ady", "age_ady", "ocean_model_age_ady", "all",.false., "none", 2
+"ocean_model", "age_dfx", "age_dfx", "ocean_model_age_dfx", "all",.false., "none", 2
+"ocean_model", "age_dfy", "age_dfy", "ocean_model_age_dfy", "all",.false., "none", 2
+"ocean_model", "area_t", "area_t", "ocean_model_area_t", "all",.false., "none", 2
+"ocean_model", "areacello", "areacello", "ocean_model_areacello", "all",.false., "none", 2
+"ocean_model", "au_visc", "au_visc", "ocean_model_au_visc", "all",.false., "none", 2
+"ocean_model", "av_visc", "av_visc", "ocean_model_av_visc", "all",.false., "none", 2
+"ocean_model", "ave_evs", "ave_evs", "ocean_model_ave_evs", "all",.false., "none", 2
+"ocean_model", "ave_hfds", "ave_hfds", "ocean_model_ave_hfds", "all",.false., "none", 2
+"ocean_model", "ave_hfls", "ave_hfls", "ocean_model_ave_hfls", "all",.false., "none", 2
+"ocean_model", "ave_hfss", "ave_hfss", "ocean_model_ave_hfss", "all",.false., "none", 2
+"ocean_model", "ave_pr", "ave_pr", "ocean_model_ave_pr", "all",.false., "none", 2
+"ocean_model", "ave_prsn", "ave_prsn", "ocean_model_ave_prsn", "all",.false., "none", 2
+"ocean_model", "ave_rlntds", "ave_rlntds", "ocean_model_ave_rlntds", "all",.false., "none", 2
+"ocean_model", "ave_rsntds", "ave_rsntds", "ocean_model_ave_rsntds", "all",.false., "none", 2
+"ocean_model", "ave_wfo", "ave_wfo", "ocean_model_ave_wfo", "all",.false., "none", 2
+"ocean_model", "bbl_thick_u", "bbl_thick_u", "ocean_model_bbl_thick_u", "all",.false., "none", 2
+"ocean_model", "bbl_thick_v", "bbl_thick_v", "ocean_model_bbl_thick_v", "all",.false., "none", 2
+"ocean_model", "cg1", "cg1", "ocean_model_cg1", "all",.false., "none", 2
+"ocean_model", "col_height", "col_height", "ocean_model_col_height", "all",.false., "none", 2
+"ocean_model", "col_mass", "col_mass", "ocean_model_col_mass", "all",.false., "none", 2
+"ocean_model", "dKE_dt", "dKE_dt", "ocean_model_dKE_dt", "all",.false., "none", 2
+"ocean_model", "deficit_ratio", "deficit_ratio", "ocean_model_deficit_ratio", "all",.false., "none", 2
+"ocean_model", "depth_ocean", "depth_ocean", "ocean_model_depth_ocean", "all",.false., "none", 2
+"ocean_model", "deptho", "deptho", "ocean_model_deptho", "all",.false., "none", 2
+"ocean_model", "dhdt", "dhdt", "ocean_model_dhdt", "all",.false., "none", 2
+"ocean_model", "diff_work", "diff_work", "ocean_model_diff_work", "all",.false., "none", 2
+"ocean_model", "diffu", "diffu", "ocean_model_diffu", "all",.false., "none", 2
+"ocean_model", "diffv", "diffv", "ocean_model_diffv", "all",.false., "none", 2
+"ocean_model", "difmxybo", "difmxybo", "ocean_model_difmxybo", "all",.false., "none", 2
+"ocean_model", "difmxylo", "difmxylo", "ocean_model_difmxylo", "all",.false., "none", 2
+"ocean_model", "diftrblo", "diftrblo", "ocean_model_diftrblo", "all",.false., "none", 2
+"ocean_model", "diftrelo", "diftrelo", "ocean_model_diftrelo", "all",.false., "none", 2
+"ocean_model", "difvho", "difvho", "ocean_model_difvho", "all",.false., "none", 2
+"ocean_model", "difvso", "difvso", "ocean_model_difvso", "all",.false., "none", 2
+"ocean_model", "dispkexyfo", "dispkexyfo", "ocean_model_dispkexyfo", "all",.false., "none", 2
+"ocean_model", "du_dt_visc", "du_dt_visc", "ocean_model_du_dt_visc", "all",.false., "none", 2
+"ocean_model", "dudt", "dudt", "ocean_model_dudt", "all",.false., "none", 2
+"ocean_model", "dudt_dia", "dudt_dia", "ocean_model_dudt_dia", "all",.false., "none", 2
+"ocean_model", "dv_dt_visc", "dv_dt_visc", "ocean_model_dv_dt_visc", "all",.false., "none", 2
+"ocean_model", "dvdt", "dvdt", "ocean_model_dvdt", "all",.false., "none", 2
+"ocean_model", "dvdt_dia", "dvdt_dia", "ocean_model_dvdt_dia", "all",.false., "none", 2
+"ocean_model", "dxCu", "dxCu", "ocean_model_dxCu", "all",.false., "none", 2
+"ocean_model", "dxCv", "dxCv", "ocean_model_dxCv", "all",.false., "none", 2
+"ocean_model", "dxt", "dxt", "ocean_model_dxt", "all",.false., "none", 2
+"ocean_model", "dyCu", "dyCu", "ocean_model_dyCu", "all",.false., "none", 2
+"ocean_model", "dyCv", "dyCv", "ocean_model_dyCv", "all",.false., "none", 2
+"ocean_model", "dyt", "dyt", "ocean_model_dyt", "all",.false., "none", 2
+"ocean_model", "e", "e", "ocean_model_e", "all",.false., "none", 2
+"ocean_model", "e_D", "e_D", "ocean_model_e_D", "all",.false., "none", 2
+"ocean_model", "e_predia", "e_predia", "ocean_model_e_predia", "all",.false., "none", 2
+"ocean_model", "ea", "ea", "ocean_model_ea", "all",.false., "none", 2
+"ocean_model", "eb", "eb", "ocean_model_eb", "all",.false., "none", 2
+"ocean_model", "eta_bt", "eta_bt", "ocean_model_eta_bt", "all",.false., "none", 2
+"ocean_model", "eta_cor", "eta_cor", "ocean_model_eta_cor", "all",.false., "none", 2
+"ocean_model", "eta_hifreq", "eta_hifreq", "ocean_model_eta_hifreq", "all",.false., "none", 2
+"ocean_model", "eta_pred_hifreq", "eta_pred_hifreq", "ocean_model_eta_pred_hifreq", "all",.false., "none", 2
+"ocean_model", "eta_st", "eta_st", "ocean_model_eta_st", "all",.false., "none", 2
+"ocean_model", "evap", "evap", "ocean_model_evap", "all",.false., "none", 2
+"ocean_model", "evap_ga", "evap_ga", "ocean_model_evap_ga", "all",.false., "none", 2
+"ocean_model", "evs", "evs", "ocean_model_evs", "all",.false., "none", 2
+"ocean_model", "ficeberg", "ficeberg", "ocean_model_ficeberg", "all",.false., "none", 2
+"ocean_model", "fprec", "fprec", "ocean_model_fprec", "all",.false., "none", 2
+"ocean_model", "fprec_ga", "fprec_ga", "ocean_model_fprec_ga", "all",.false., "none", 2
+"ocean_model", "frazil", "frazil", "ocean_model_frazil", "all",.false., "none", 2
+"ocean_model", "frazil_heat_tendency", "frazil_heat_tendency", "ocean_model_frazil_heat_tendency", "all",.false., "none", 2
+"ocean_model", "frazil_heat_tendency_2d", "frazil_heat_tendency_2d", "ocean_model_frazil_heat_tendency_2d", "all",.false., "none", 2
+"ocean_model", "frazil_temp_tendency", "frazil_temp_tendency", "ocean_model_frazil_temp_tendency", "all",.false., "none", 2
+"ocean_model", "frhatu", "frhatu", "ocean_model_frhatu", "all",.false., "none", 2
+"ocean_model", "frhatu1", "frhatu1", "ocean_model_frhatu1", "all",.false., "none", 2
+"ocean_model", "frhatv", "frhatv", "ocean_model_frhatv", "all",.false., "none", 2
+"ocean_model", "frhatv1", "frhatv1", "ocean_model_frhatv1", "all",.false., "none", 2
+"ocean_model", "friver", "friver", "ocean_model_friver", "all",.false., "none", 2
+"ocean_model", "frunoff", "frunoff", "ocean_model_frunoff", "all",.false., "none", 2
+"ocean_model", "gKEu", "gKEu", "ocean_model_gKEu", "all",.false., "none", 2
+"ocean_model", "gKEv", "gKEv", "ocean_model_gKEv", "all",.false., "none", 2
+"ocean_model", "geo_heat", "geo_heat", "ocean_model_geo_heat", "all",.false., "none", 2
+"ocean_model", "geolat", "geolat", "ocean_model_geolat", "all",.false., "none", 2
+"ocean_model", "geolat_c", "geolat_c", "ocean_model_geolat_c", "all",.false., "none", 2
+"ocean_model", "geolat_u", "geolat_u", "ocean_model_geolat_u", "all",.false., "none", 2
+"ocean_model", "geolat_v", "geolat_v", "ocean_model_geolat_v", "all",.false., "none", 2
+"ocean_model", "geolon", "geolon", "ocean_model_geolon", "all",.false., "none", 2
+"ocean_model", "geolon_c", "geolon_c", "ocean_model_geolon_c", "all",.false., "none", 2
+"ocean_model", "geolon_u", "geolon_u", "ocean_model_geolon_u", "all",.false., "none", 2
+"ocean_model", "geolon_v", "geolon_v", "ocean_model_geolon_v", "all",.false., "none", 2
+"ocean_model", "gtot_e", "gtot_e", "ocean_model_gtot_e", "all",.false., "none", 2
+"ocean_model", "gtot_n", "gtot_n", "ocean_model_gtot_n", "all",.false., "none", 2
+"ocean_model", "gtot_s", "gtot_s", "ocean_model_gtot_s", "all",.false., "none", 2
+"ocean_model", "gtot_w", "gtot_w", "ocean_model_gtot_w", "all",.false., "none", 2
+"ocean_model", "h", "h", "ocean_model_h", "all",.false., "none", 2
+"ocean_model", "h_ML", "h_ML", "ocean_model_h_ML", "all",.false., "none", 2
+"ocean_model", "h_miss_ML", "h_miss_ML", "ocean_model_h_miss_ML", "all",.false., "none", 2
+"ocean_model", "h_predia", "h_predia", "ocean_model_h_predia", "all",.false., "none", 2
+"ocean_model", "h_rho", "h_rho", "ocean_model_h_rho", "all",.false., "none", 2
+"ocean_model", "heat_content_cond", "heat_content_cond", "ocean_model_heat_content_cond", "all",.false., "none", 2
+"ocean_model", "heat_content_fprec", "heat_content_fprec", "ocean_model_heat_content_fprec", "all",.false., "none", 2
+"ocean_model", "heat_content_frunoff", "heat_content_frunoff", "ocean_model_heat_content_frunoff", "all",.false., "none", 2
+"ocean_model", "heat_content_lprec", "heat_content_lprec", "ocean_model_heat_content_lprec", "all",.false., "none", 2
+"ocean_model", "heat_content_lrunoff", "heat_content_lrunoff", "ocean_model_heat_content_lrunoff", "all",.false., "none", 2
+"ocean_model", "heat_content_massin", "heat_content_massin", "ocean_model_heat_content_massin", "all",.false., "none", 2
+"ocean_model", "heat_content_massout", "heat_content_massout", "ocean_model_heat_content_massout", "all",.false., "none", 2
+"ocean_model", "heat_content_surfwater", "heat_content_surfwater", "ocean_model_heat_content_surfwater", "all",.false., "none", 2
+"ocean_model", "heat_content_vprec", "heat_content_vprec", "ocean_model_heat_content_vprec", "all",.false., "none", 2
+"ocean_model", "hfds", "hfds", "ocean_model_hfds", "all",.false., "none", 2
+"ocean_model", "hfevapds", "hfevapds", "ocean_model_hfevapds", "all",.false., "none", 2
+"ocean_model", "hfgeou", "hfgeou", "ocean_model_hfgeou", "all",.false., "none", 2
+"ocean_model", "hfibthermds", "hfibthermds", "ocean_model_hfibthermds", "all",.false., "none", 2
+"ocean_model", "hfls", "hfls", "ocean_model_hfls", "all",.false., "none", 2
+"ocean_model", "hfrainds", "hfrainds", "ocean_model_hfrainds", "all",.false., "none", 2
+"ocean_model", "hfrunoffds", "hfrunoffds", "ocean_model_hfrunoffds", "all",.false., "none", 2
+"ocean_model", "hfsifrazil", "hfsifrazil", "ocean_model_hfsifrazil", "all",.false., "none", 2
+"ocean_model", "hfsnthermds", "hfsnthermds", "ocean_model_hfsnthermds", "all",.false., "none", 2
+"ocean_model", "hfss", "hfss", "ocean_model_hfss", "all",.false., "none", 2
+"ocean_model", "internal_heat", "internal_heat", "ocean_model_internal_heat", "all",.false., "none", 2
+"ocean_model", "kv_bbl_u", "kv_bbl_u", "ocean_model_kv_bbl_u", "all",.false., "none", 2
+"ocean_model", "kv_bbl_v", "kv_bbl_v", "ocean_model_kv_bbl_v", "all",.false., "none", 2
+"ocean_model", "lat_ga", "lat_ga", "ocean_model_lat_ga", "all",.false., "none", 2
+"ocean_model", "latent", "latent", "ocean_model_latent", "all",.false., "none", 2
+"ocean_model", "latent_evap", "latent_evap", "ocean_model_latent_evap", "all",.false., "none", 2
+"ocean_model", "latent_fprec_diag", "latent_fprec_diag", "ocean_model_latent_fprec_diag", "all",.false., "none", 2
+"ocean_model", "latent_frunoff", "latent_frunoff", "ocean_model_latent_frunoff", "all",.false., "none", 2
+"ocean_model", "lprec", "lprec", "ocean_model_lprec", "all",.false., "none", 2
+"ocean_model", "lprec_ga", "lprec_ga", "ocean_model_lprec_ga", "all",.false., "none", 2
+"ocean_model", "lrunoff", "lrunoff", "ocean_model_lrunoff", "all",.false., "none", 2
+"ocean_model", "lw_ga", "lw_ga", "ocean_model_lw_ga", "all",.false., "none", 2
+"ocean_model", "mass_wt", "mass_wt", "ocean_model_mass_wt", "all",.false., "none", 2
+"ocean_model", "masscello", "masscello", "ocean_model_masscello", "all",.false., "none", 2
+"ocean_model", "masso", "masso", "ocean_model_masso", "all",.false., "none", 2
+"ocean_model", "maxTKE", "maxTKE", "ocean_model_maxTKE", "all",.false., "none", 2
+"ocean_model", "mlotst", "mlotst", "ocean_model_mlotst", "all",.false., "none", 2
+"ocean_model", "mlotstsq", "mlotstsq", "ocean_model_mlotstsq", "all",.false., "none", 2
+"ocean_model", "net_fresh_water_global_adjustment", "net_fresh_water_global_adjustment", "ocean_model_net_fresh_water_global_adjustment", "all",.false., "none", 2
+"ocean_model", "net_fresh_water_global_scaling", "net_fresh_water_global_scaling", "ocean_model_net_fresh_water_global_scaling", "all",.false., "none", 2
+"ocean_model", "net_heat_coupler", "net_heat_coupler", "ocean_model_net_heat_coupler", "all",.false., "none", 2
+"ocean_model", "net_heat_coupler_ga", "net_heat_coupler_ga", "ocean_model_net_heat_coupler_ga", "all",.false., "none", 2
+"ocean_model", "net_heat_surface", "net_heat_surface", "ocean_model_net_heat_surface", "all",.false., "none", 2
+"ocean_model", "net_heat_surface_ga", "net_heat_surface_ga", "ocean_model_net_heat_surface_ga", "all",.false., "none", 2
+"ocean_model", "net_massin", "net_massin", "ocean_model_net_massin", "all",.false., "none", 2
+"ocean_model", "net_massout", "net_massout", "ocean_model_net_massout", "all",.false., "none", 2
+"ocean_model", "neutral_slope_x", "neutral_slope_x", "ocean_model_neutral_slope_x", "all",.false., "none", 2
+"ocean_model", "neutral_slope_y", "neutral_slope_y", "ocean_model_neutral_slope_y", "all",.false., "none", 2
+"ocean_model", "nkml_visc_u", "nkml_visc_u", "ocean_model_nkml_visc_u", "all",.false., "none", 2
+"ocean_model", "nkml_visc_v", "nkml_visc_v", "ocean_model_nkml_visc_v", "all",.false., "none", 2
+"ocean_model", "obvfsq", "obvfsq", "ocean_model_obvfsq", "all",.false., "none", 2
+"ocean_model", "opac_1", "opac_1", "ocean_model_opac_1", "all",.false., "none", 2
+"ocean_model", "opac_2", "opac_2", "ocean_model_opac_2", "all",.false., "none", 2
+"ocean_model", "opac_3", "opac_3", "ocean_model_opac_3", "all",.false., "none", 2
+"ocean_model", "opottempmint", "opottempmint", "ocean_model_opottempmint", "all",.false., "none", 2
+"ocean_model", "opottemptend", "opottemptend", "ocean_model_opottemptend", "all",.false., "none", 2
+"ocean_model", "opottemptend_2d", "opottemptend_2d", "ocean_model_opottemptend_2d", "all",.false., "none", 2
+"ocean_model", "osalttend", "osalttend", "ocean_model_osalttend", "all",.false., "none", 2
+"ocean_model", "osalttend_2d", "osalttend_2d", "ocean_model_osalttend_2d", "all",.false., "none", 2
+"ocean_model", "p_surf", "p_surf", "ocean_model_p_surf", "all",.false., "none", 2
+"ocean_model", "pbo", "pbo", "ocean_model_pbo", "all",.false., "none", 2
+"ocean_model", "pr", "pr", "ocean_model_pr", "all",.false., "none", 2
+"ocean_model", "precip", "precip", "ocean_model_precip", "all",.false., "none", 2
+"ocean_model", "precip_ga", "precip_ga", "ocean_model_precip_ga", "all",.false., "none", 2
+"ocean_model", "prsn", "prsn", "ocean_model_prsn", "all",.false., "none", 2
+"ocean_model", "pso", "pso", "ocean_model_pso", "all",.false., "none", 2
+"ocean_model", "rhoinsitu", "rhoinsitu", "ocean_model_rhoinsitu", "all",.false., "none", 2
+"ocean_model", "rhopot0", "rhopot0", "ocean_model_rhopot0", "all",.false., "none", 2
+"ocean_model", "rhopot2", "rhopot2", "ocean_model_rhopot2", "all",.false., "none", 2
+"ocean_model", "rlntds", "rlntds", "ocean_model_rlntds", "all",.false., "none", 2
+"ocean_model", "rsntds", "rsntds", "ocean_model_rsntds", "all",.false., "none", 2
+"ocean_model", "rvxu", "rvxu", "ocean_model_rvxu", "all",.false., "none", 2
+"ocean_model", "rvxv", "rvxv", "ocean_model_rvxv", "all",.false., "none", 2
+"ocean_model", "salt", "salt", "ocean_model_salt", "all",.false., "none", 2
+"ocean_model", "salt_deficit", "salt_deficit", "ocean_model_salt_deficit", "all",.false., "none", 2
+"ocean_model", "salt_flux", "salt_flux", "ocean_model_salt_flux", "all",.false., "none", 2
+"ocean_model", "salt_flux_global_restoring_adjustment", "salt_flux_global_restoring_adjustment", "ocean_model_salt_flux_global_restoring_adjustment", "all",.false., "none", 2
+"ocean_model", "salt_flux_global_restoring_scaling", "salt_flux_global_restoring_scaling", "ocean_model_salt_flux_global_restoring_scaling", "all",.false., "none", 2
+"ocean_model", "salt_flux_in", "salt_flux_in", "ocean_model_salt_flux_in", "all",.false., "none", 2
+"ocean_model", "salt_flux_restore", "salt_flux_restore", "ocean_model_salt_flux_restore", "all",.false., "none", 2
+"ocean_model", "salt_int", "salt_int", "ocean_model_salt_int", "all",.false., "none", 2
+"ocean_model", "salt_layer_ave", "salt_layer_ave", "ocean_model_salt_layer_ave", "all",.false., "none", 2
+"ocean_model", "salt_predia", "salt_predia", "ocean_model_salt_predia", "all",.false., "none", 2
+"ocean_model", "sens_ga", "sens_ga", "ocean_model_sens_ga", "all",.false., "none", 2
+"ocean_model", "sensible", "sensible", "ocean_model_sensible", "all",.false., "none", 2
+"ocean_model", "sfdsi", "sfdsi", "ocean_model_sfdsi", "all",.false., "none", 2
+"ocean_model", "so", "so", "ocean_model_so", "all",.false., "none", 2
+"ocean_model", "sob", "sob", "ocean_model_sob", "all",.false., "none", 2
+"ocean_model", "soga", "soga", "ocean_model_soga", "all",.false., "none", 2
+"ocean_model", "somint", "somint", "ocean_model_somint", "all",.false., "none", 2
+"ocean_model", "sos", "sos", "ocean_model_sos", "all",.false., "none", 2
+"ocean_model", "sosga", "sosga", "ocean_model_sosga", "all",.false., "none", 2
+"ocean_model", "sossq", "sossq", "ocean_model_sossq", "all",.false., "none", 2
+"ocean_model", "speed", "speed", "ocean_model_speed", "all",.false., "none", 2
+"ocean_model", "ssh_ga", "ssh_ga", "ocean_model_ssh_ga", "all",.false., "none", 2
+"ocean_model", "sss_global", "sss_global", "ocean_model_sss_global", "all",.false., "none", 2
+"ocean_model", "sst_global", "sst_global", "ocean_model_sst_global", "all",.false., "none", 2
+"ocean_model", "subML_N2", "subML_N2", "ocean_model_subML_N2", "all",.false., "none", 2
+"ocean_model", "sw_ga", "sw_ga", "ocean_model_sw_ga", "all",.false., "none", 2
+"ocean_model", "tauuo", "tauuo", "ocean_model_tauuo", "all",.false., "none", 2
+"ocean_model", "tauvo", "tauvo", "ocean_model_tauvo", "all",.false., "none", 2
+"ocean_model", "taux", "taux", "ocean_model_taux", "all",.false., "none", 2
+"ocean_model", "taux_bot", "taux_bot", "ocean_model_taux_bot", "all",.false., "none", 2
+"ocean_model", "tauy", "tauy", "ocean_model_tauy", "all",.false., "none", 2
+"ocean_model", "tauy_bot", "tauy_bot", "ocean_model_tauy_bot", "all",.false., "none", 2
+"ocean_model", "temp", "temp", "ocean_model_temp", "all",.false., "none", 2
+"ocean_model", "temp_int", "temp_int", "ocean_model_temp_int", "all",.false., "none", 2
+"ocean_model", "temp_layer_ave", "temp_layer_ave", "ocean_model_temp_layer_ave", "all",.false., "none", 2
+"ocean_model", "temp_predia", "temp_predia", "ocean_model_temp_predia", "all",.false., "none", 2
+"ocean_model", "thetao", "thetao", "ocean_model_thetao", "all",.false., "none", 2
+"ocean_model", "thetaoga", "thetaoga", "ocean_model_thetaoga", "all",.false., "none", 2
+"ocean_model", "thkcello", "thkcello", "ocean_model_thkcello", "all",.false., "none", 2
+"ocean_model", "tnkebto", "tnkebto", "ocean_model_tnkebto", "all",.false., "none", 2
+"ocean_model", "tob", "tob", "ocean_model_tob", "all",.false., "none", 2
+"ocean_model", "tos", "tos", "ocean_model_tos", "all",.false., "none", 2
+"ocean_model", "tosga", "tosga", "ocean_model_tosga", "all",.false., "none", 2
+"ocean_model", "tossq", "tossq", "ocean_model_tossq", "all",.false., "none", 2
+"ocean_model", "total_LwLatSens", "total_LwLatSens", "ocean_model_total_LwLatSens", "all",.false., "none", 2
+"ocean_model", "total_PRCmE", "total_PRCmE", "ocean_model_total_PRCmE", "all",.false., "none", 2
+"ocean_model", "total_evap", "total_evap", "ocean_model_total_evap", "all",.false., "none", 2
+"ocean_model", "total_evs", "total_evs", "ocean_model_total_evs", "all",.false., "none", 2
+"ocean_model", "total_ficeberg", "total_ficeberg", "ocean_model_total_ficeberg", "all",.false., "none", 2
+"ocean_model", "total_fprec", "total_fprec", "ocean_model_total_fprec", "all",.false., "none", 2
+"ocean_model", "total_friver", "total_friver", "ocean_model_total_friver", "all",.false., "none", 2
+"ocean_model", "total_frunoff", "total_frunoff", "ocean_model_total_frunoff", "all",.false., "none", 2
+"ocean_model", "total_heat_content_cond", "total_heat_content_cond", "ocean_model_total_heat_content_cond", "all",.false., "none", 2
+"ocean_model", "total_heat_content_fprec", "total_heat_content_fprec", "ocean_model_total_heat_content_fprec", "all",.false., "none", 2
+"ocean_model", "total_heat_content_frunoff", "total_heat_content_frunoff", "ocean_model_total_heat_content_frunoff", "all",.false., "none", 2
+"ocean_model", "total_heat_content_lprec", "total_heat_content_lprec", "ocean_model_total_heat_content_lprec", "all",.false., "none", 2
+"ocean_model", "total_heat_content_lrunoff", "total_heat_content_lrunoff", "ocean_model_total_heat_content_lrunoff", "all",.false., "none", 2
+"ocean_model", "total_heat_content_massin", "total_heat_content_massin", "ocean_model_total_heat_content_massin", "all",.false., "none", 2
+"ocean_model", "total_heat_content_massout", "total_heat_content_massout", "ocean_model_total_heat_content_massout", "all",.false., "none", 2
+"ocean_model", "total_heat_content_surfwater", "total_heat_content_surfwater", "ocean_model_total_heat_content_surfwater", "all",.false., "none", 2
+"ocean_model", "total_heat_content_vprec", "total_heat_content_vprec", "ocean_model_total_heat_content_vprec", "all",.false., "none", 2
+"ocean_model", "total_hfds", "total_hfds", "ocean_model_total_hfds", "all",.false., "none", 2
+"ocean_model", "total_hfevapds", "total_hfevapds", "ocean_model_total_hfevapds", "all",.false., "none", 2
+"ocean_model", "total_hfibthermds", "total_hfibthermds", "ocean_model_total_hfibthermds", "all",.false., "none", 2
+"ocean_model", "total_hfls", "total_hfls", "ocean_model_total_hfls", "all",.false., "none", 2
+"ocean_model", "total_hfrainds", "total_hfrainds", "ocean_model_total_hfrainds", "all",.false., "none", 2
+"ocean_model", "total_hfrunoffds", "total_hfrunoffds", "ocean_model_total_hfrunoffds", "all",.false., "none", 2
+"ocean_model", "total_hfsnthermds", "total_hfsnthermds", "ocean_model_total_hfsnthermds", "all",.false., "none", 2
+"ocean_model", "total_hfsolidrunoffds", "total_hfsolidrunoffds", "ocean_model_total_hfsolidrunoffds", "all",.false., "none", 2
+"ocean_model", "total_hfss", "total_hfss", "ocean_model_total_hfss", "all",.false., "none", 2
+"ocean_model", "total_lat", "total_lat", "ocean_model_total_lat", "all",.false., "none", 2
+"ocean_model", "total_lat_evap", "total_lat_evap", "ocean_model_total_lat_evap", "all",.false., "none", 2
+"ocean_model", "total_lat_fprec", "total_lat_fprec", "ocean_model_total_lat_fprec", "all",.false., "none", 2
+"ocean_model", "total_lat_frunoff", "total_lat_frunoff", "ocean_model_total_lat_frunoff", "all",.false., "none", 2
+"ocean_model", "total_lprec", "total_lprec", "ocean_model_total_lprec", "all",.false., "none", 2
+"ocean_model", "total_lrunoff", "total_lrunoff", "ocean_model_total_lrunoff", "all",.false., "none", 2
+"ocean_model", "total_lw", "total_lw", "ocean_model_total_lw", "all",.false., "none", 2
+"ocean_model", "total_net_heat_coupler", "total_net_heat_coupler", "ocean_model_total_net_heat_coupler", "all",.false., "none", 2
+"ocean_model", "total_net_heat_surface", "total_net_heat_surface", "ocean_model_total_net_heat_surface", "all",.false., "none", 2
+"ocean_model", "total_net_massin", "total_net_massin", "ocean_model_total_net_massin", "all",.false., "none", 2
+"ocean_model", "total_net_massout", "total_net_massout", "ocean_model_total_net_massout", "all",.false., "none", 2
+"ocean_model", "total_pr", "total_pr", "ocean_model_total_pr", "all",.false., "none", 2
+"ocean_model", "total_precip", "total_precip", "ocean_model_total_precip", "all",.false., "none", 2
+"ocean_model", "total_prsn", "total_prsn", "ocean_model_total_prsn", "all",.false., "none", 2
+"ocean_model", "total_rlntds", "total_rlntds", "ocean_model_total_rlntds", "all",.false., "none", 2
+"ocean_model", "total_rsntds", "total_rsntds", "ocean_model_total_rsntds", "all",.false., "none", 2
+"ocean_model", "total_salt_Flux_In", "total_salt_Flux_In", "ocean_model_total_salt_Flux_In", "all",.false., "none", 2
+"ocean_model", "total_salt_Flux_Restore", "total_salt_Flux_Restore", "ocean_model_total_salt_Flux_Restore", "all",.false., "none", 2
+"ocean_model", "total_salt_flux", "total_salt_flux", "ocean_model_total_salt_flux", "all",.false., "none", 2
+"ocean_model", "total_sens", "total_sens", "ocean_model_total_sens", "all",.false., "none", 2
+"ocean_model", "total_sfdsi", "total_sfdsi", "ocean_model_total_sfdsi", "all",.false., "none", 2
+"ocean_model", "total_sw", "total_sw", "ocean_model_total_sw", "all",.false., "none", 2
+"ocean_model", "total_vprec", "total_vprec", "ocean_model_total_vprec", "all",.false., "none", 2
+"ocean_model", "total_wfo", "total_wfo", "ocean_model_total_wfo", "all",.false., "none", 2
+"ocean_model", "u", "u", "ocean_model_u", "all",.false., "none", 2
+"ocean_model", "u_BT_accel", "u_BT_accel", "ocean_model_u_BT_accel", "all",.false., "none", 2
+"ocean_model", "u_accel_bt", "u_accel_bt", "ocean_model_u_accel_bt", "all",.false., "none", 2
+"ocean_model", "u_predia", "u_predia", "ocean_model_u_predia", "all",.false., "none", 2
+"ocean_model", "uav", "uav", "ocean_model_uav", "all",.false., "none", 2
+"ocean_model", "ubt", "ubt", "ocean_model_ubt", "all",.false., "none", 2
+"ocean_model", "ubt_hifreq", "ubt_hifreq", "ocean_model_ubt_hifreq", "all",.false., "none", 2
+"ocean_model", "ubt_st", "ubt_st", "ocean_model_ubt_st", "all",.false., "none", 2
+"ocean_model", "ubtav", "ubtav", "ocean_model_ubtav", "all",.false., "none", 2
+"ocean_model", "ubtforce", "ubtforce", "ocean_model_ubtforce", "all",.false., "none", 2
+"ocean_model", "udml_restrat", "udml_restrat", "ocean_model_udml_restrat", "all",.false., "none", 2
+"ocean_model", "uh", "uh", "ocean_model_uh", "all",.false., "none", 2
+"ocean_model", "uhGM", "uhGM", "ocean_model_uhGM", "all",.false., "none", 2
+"ocean_model", "uhGM_rho", "uhGM_rho", "ocean_model_uhGM_rho", "all",.false., "none", 2
+"ocean_model", "uh_rho", "uh_rho", "ocean_model_uh_rho", "all",.false., "none", 2
+"ocean_model", "uhbt", "uhbt", "ocean_model_uhbt", "all",.false., "none", 2
+"ocean_model", "uhbt0", "uhbt0", "ocean_model_uhbt0", "all",.false., "none", 2
+"ocean_model", "uhbt_hifreq", "uhbt_hifreq", "ocean_model_uhbt_hifreq", "all",.false., "none", 2
+"ocean_model", "uhml", "uhml", "ocean_model_uhml", "all",.false., "none", 2
+"ocean_model", "umo", "umo", "ocean_model_umo", "all",.false., "none", 2
+"ocean_model", "umo_2d", "umo_2d", "ocean_model_umo_2d", "all",.false., "none", 2
+"ocean_model", "uo", "uo", "ocean_model_uo", "all",.false., "none", 2
+"ocean_model", "ustar", "ustar", "ocean_model_ustar", "all",.false., "none", 2
+"ocean_model", "v", "v", "ocean_model_v", "all",.false., "none", 2
+"ocean_model", "v_BT_accel", "v_BT_accel", "ocean_model_v_BT_accel", "all",.false., "none", 2
+"ocean_model", "v_accel_bt", "v_accel_bt", "ocean_model_v_accel_bt", "all",.false., "none", 2
+"ocean_model", "v_predia", "v_predia", "ocean_model_v_predia", "all",.false., "none", 2
+"ocean_model", "vav", "vav", "ocean_model_vav", "all",.false., "none", 2
+"ocean_model", "vbt", "vbt", "ocean_model_vbt", "all",.false., "none", 2
+"ocean_model", "vbt_hifreq", "vbt_hifreq", "ocean_model_vbt_hifreq", "all",.false., "none", 2
+"ocean_model", "vbt_st", "vbt_st", "ocean_model_vbt_st", "all",.false., "none", 2
+"ocean_model", "vbtav", "vbtav", "ocean_model_vbtav", "all",.false., "none", 2
+"ocean_model", "vbtforce", "vbtforce", "ocean_model_vbtforce", "all",.false., "none", 2
+"ocean_model", "vdml_restrat", "vdml_restrat", "ocean_model_vdml_restrat", "all",.false., "none", 2
+"ocean_model", "vh", "vh", "ocean_model_vh", "all",.false., "none", 2
+"ocean_model", "vhGM", "vhGM", "ocean_model_vhGM", "all",.false., "none", 2
+"ocean_model", "vhGM_rho", "vhGM_rho", "ocean_model_vhGM_rho", "all",.false., "none", 2
+"ocean_model", "vh_rho", "vh_rho", "ocean_model_vh_rho", "all",.false., "none", 2
+"ocean_model", "vhbt", "vhbt", "ocean_model_vhbt", "all",.false., "none", 2
+"ocean_model", "vhbt0", "vhbt0", "ocean_model_vhbt0", "all",.false., "none", 2
+"ocean_model", "vhbt_hifreq", "vhbt_hifreq", "ocean_model_vhbt_hifreq", "all",.false., "none", 2
+"ocean_model", "vhml", "vhml", "ocean_model_vhml", "all",.false., "none", 2
+"ocean_model", "visc_rem_u", "visc_rem_u", "ocean_model_visc_rem_u", "all",.false., "none", 2
+"ocean_model", "visc_rem_v", "visc_rem_v", "ocean_model_visc_rem_v", "all",.false., "none", 2
+"ocean_model", "vmo", "vmo", "ocean_model_vmo", "all",.false., "none", 2
+"ocean_model", "vmo_2d", "vmo_2d", "ocean_model_vmo_2d", "all",.false., "none", 2
+"ocean_model", "vo", "vo", "ocean_model_vo", "all",.false., "none", 2
+"ocean_model", "volo", "volo", "ocean_model_volo", "all",.false., "none", 2
+"ocean_model", "vprec", "vprec", "ocean_model_vprec", "all",.false., "none", 2
+"ocean_model", "vprec_global_adjustment", "vprec_global_adjustment", "ocean_model_vprec_global_adjustment", "all",.false., "none", 2
+"ocean_model", "vprec_global_scaling", "vprec_global_scaling", "ocean_model_vprec_global_scaling", "all",.false., "none", 2
+"ocean_model", "vrec_ga", "vrec_ga", "ocean_model_vrec_ga", "all",.false., "none", 2
+"ocean_model", "wd", "wd", "ocean_model_wd", "all",.false., "none", 2
+"ocean_model", "wet", "wet", "ocean_model_wet", "all",.false., "none", 2
+"ocean_model", "wet_c", "wet_c", "ocean_model_wet_c", "all",.false., "none", 2
+"ocean_model", "wet_u", "wet_u", "ocean_model_wet_u", "all",.false., "none", 2
+"ocean_model", "wet_v", "wet_v", "ocean_model_wet_v", "all",.false., "none", 2
+"ocean_model", "wfo", "wfo", "ocean_model_wfo", "all",.false., "none", 2
+"ocean_model_z", "CFC11", "CFC11", "ocean_model_z_CFC11", "all",.false., "none", 2
+"ocean_model_z", "CFC11_xyave", "CFC11_xyave", "ocean_model_z_CFC11_xyave", "all",.false., "none", 2
+"ocean_model_z", "CFC12", "CFC12", "ocean_model_z_CFC12", "all",.false., "none", 2
+"ocean_model_z", "CFC12_xyave", "CFC12_xyave", "ocean_model_z_CFC12_xyave", "all",.false., "none", 2
+"ocean_model_z", "Kd", "Kd", "ocean_model_z_Kd", "all",.false., "none", 2
+"ocean_model_z", "Kd_itides", "Kd_itides", "ocean_model_z_Kd_itides", "all",.false., "none", 2
+"ocean_model_z", "N2", "N2", "ocean_model_z_N2", "all",.false., "none", 2
+"ocean_model_z", "Sflx_dia_adv", "Sflx_dia_adv", "ocean_model_z_Sflx_dia_adv", "all",.false., "none", 2
+"ocean_model_z", "Sflx_dia_dif", "Sflx_dia_dif", "ocean_model_z_Sflx_dia_dif", "all",.false., "none", 2
+"ocean_model_z", "Tflx_dia_adv", "Tflx_dia_adv", "ocean_model_z_Tflx_dia_adv", "all",.false., "none", 2
+"ocean_model_z", "Tflx_dia_dif", "Tflx_dia_dif", "ocean_model_z_Tflx_dia_dif", "all",.false., "none", 2
+"ocean_model_z", "age", "age", "ocean_model_z_age", "all",.false., "none", 2
+"ocean_model_z", "age_xyave", "age_xyave", "ocean_model_z_age_xyave", "all",.false., "none", 2
+"ocean_model_z_new", "Ahh", "Ahh", "ocean_model_z_new_Ahh", "all",.false., "none", 2
+"ocean_model_z_new", "CAu", "CAu", "ocean_model_z_new_CAu", "all",.false., "none", 2
+"ocean_model_z_new", "CAv", "CAv", "ocean_model_z_new_CAv", "all",.false., "none", 2
+"ocean_model_z_new", "CFC11", "CFC11", "ocean_model_z_new_CFC11", "all",.false., "none", 2
+"ocean_model_z_new", "CFC11_adx", "CFC11_adx", "ocean_model_z_new_CFC11_adx", "all",.false., "none", 2
+"ocean_model_z_new", "CFC11_ady", "CFC11_ady", "ocean_model_z_new_CFC11_ady", "all",.false., "none", 2
+"ocean_model_z_new", "CFC11_dfx", "CFC11_dfx", "ocean_model_z_new_CFC11_dfx", "all",.false., "none", 2
+"ocean_model_z_new", "CFC11_dfy", "CFC11_dfy", "ocean_model_z_new_CFC11_dfy", "all",.false., "none", 2
+"ocean_model_z_new", "CFC12", "CFC12", "ocean_model_z_new_CFC12", "all",.false., "none", 2
+"ocean_model_z_new", "CFC12_adx", "CFC12_adx", "ocean_model_z_new_CFC12_adx", "all",.false., "none", 2
+"ocean_model_z_new", "CFC12_ady", "CFC12_ady", "ocean_model_z_new_CFC12_ady", "all",.false., "none", 2
+"ocean_model_z_new", "CFC12_dfx", "CFC12_dfx", "ocean_model_z_new_CFC12_dfx", "all",.false., "none", 2
+"ocean_model_z_new", "CFC12_dfy", "CFC12_dfy", "ocean_model_z_new_CFC12_dfy", "all",.false., "none", 2
+"ocean_model_z_new", "FrictWork", "FrictWork", "ocean_model_z_new_FrictWork", "all",.false., "none", 2
+"ocean_model_z_new", "Hu_visc", "Hu_visc", "ocean_model_z_new_Hu_visc", "all",.false., "none", 2
+"ocean_model_z_new", "Hv_visc", "Hv_visc", "ocean_model_z_new_Hv_visc", "all",.false., "none", 2
+"ocean_model_z_new", "KE", "KE", "ocean_model_z_new_KE", "all",.false., "none", 2
+"ocean_model_z_new", "KE_Coradv", "KE_Coradv", "ocean_model_z_new_KE_Coradv", "all",.false., "none", 2
+"ocean_model_z_new", "KE_adv", "KE_adv", "ocean_model_z_new_KE_adv", "all",.false., "none", 2
+"ocean_model_z_new", "KE_dia", "KE_dia", "ocean_model_z_new_KE_dia", "all",.false., "none", 2
+"ocean_model_z_new", "KE_horvisc", "KE_horvisc", "ocean_model_z_new_KE_horvisc", "all",.false., "none", 2
+"ocean_model_z_new", "KE_visc", "KE_visc", "ocean_model_z_new_KE_visc", "all",.false., "none", 2
+"ocean_model_z_new", "KHTH_t", "KHTH_t", "ocean_model_z_new_KHTH_t", "all",.false., "none", 2
+"ocean_model_z_new", "Kd_Itidal_Work", "Kd_Itidal_Work", "ocean_model_z_new_Kd_Itidal_Work", "all",.false., "none", 2
+"ocean_model_z_new", "Kd_Lowmode_Work", "Kd_Lowmode_Work", "ocean_model_z_new_Kd_Lowmode_Work", "all",.false., "none", 2
+"ocean_model_z_new", "Kd_Nikurashin_Work", "Kd_Nikurashin_Work", "ocean_model_z_new_Kd_Nikurashin_Work", "all",.false., "none", 2
+"ocean_model_z_new", "Kd_Work", "Kd_Work", "ocean_model_z_new_Kd_Work", "all",.false., "none", 2
+"ocean_model_z_new", "Kd_effective", "Kd_effective", "ocean_model_z_new_Kd_effective", "all",.false., "none", 2
+"ocean_model_z_new", "Kd_layer", "Kd_layer", "ocean_model_z_new_Kd_layer", "all",.false., "none", 2
+"ocean_model_z_new", "Khh", "Khh", "ocean_model_z_new_Khh", "all",.false., "none", 2
+"ocean_model_z_new", "PE_to_KE", "PE_to_KE", "ocean_model_z_new_PE_to_KE", "all",.false., "none", 2
+"ocean_model_z_new", "PFu", "PFu", "ocean_model_z_new_PFu", "all",.false., "none", 2
+"ocean_model_z_new", "PFv", "PFv", "ocean_model_z_new_PFv", "all",.false., "none", 2
+"ocean_model_z_new", "Rayleigh_u", "Rayleigh_u", "ocean_model_z_new_Rayleigh_u", "all",.false., "none", 2
+"ocean_model_z_new", "Rayleigh_v", "Rayleigh_v", "ocean_model_z_new_Rayleigh_v", "all",.false., "none", 2
+"ocean_model_z_new", "Rho_cv", "Rho_cv", "ocean_model_z_new_Rho_cv", "all",.false., "none", 2
+"ocean_model_z_new", "Rml", "Rml", "ocean_model_z_new_Rml", "all",.false., "none", 2
+"ocean_model_z_new", "S_advection_xy", "S_advection_xy", "ocean_model_z_new_S_advection_xy", "all",.false., "none", 2
+"ocean_model_z_new", "S_adx", "S_adx", "ocean_model_z_new_S_adx", "all",.false., "none", 2
+"ocean_model_z_new", "S_ady", "S_ady", "ocean_model_z_new_S_ady", "all",.false., "none", 2
+"ocean_model_z_new", "S_diffx", "S_diffx", "ocean_model_z_new_S_diffx", "all",.false., "none", 2
+"ocean_model_z_new", "S_diffy", "S_diffy", "ocean_model_z_new_S_diffy", "all",.false., "none", 2
+"ocean_model_z_new", "S_tendency", "S_tendency", "ocean_model_z_new_S_tendency", "all",.false., "none", 2
+"ocean_model_z_new", "Sh_tendency", "Sh_tendency", "ocean_model_z_new_Sh_tendency", "all",.false., "none", 2
+"ocean_model_z_new", "T_advection_xy", "T_advection_xy", "ocean_model_z_new_T_advection_xy", "all",.false., "none", 2
+"ocean_model_z_new", "T_adx", "T_adx", "ocean_model_z_new_T_adx", "all",.false., "none", 2
+"ocean_model_z_new", "T_ady", "T_ady", "ocean_model_z_new_T_ady", "all",.false., "none", 2
+"ocean_model_z_new", "T_diffx", "T_diffx", "ocean_model_z_new_T_diffx", "all",.false., "none", 2
+"ocean_model_z_new", "T_diffy", "T_diffy", "ocean_model_z_new_T_diffy", "all",.false., "none", 2
+"ocean_model_z_new", "T_tendency", "T_tendency", "ocean_model_z_new_T_tendency", "all",.false., "none", 2
+"ocean_model_z_new", "Th_tendency", "Th_tendency", "ocean_model_z_new_Th_tendency", "all",.false., "none", 2
+"ocean_model_z_new", "age", "age", "ocean_model_z_new_age", "all",.false., "none", 2
+"ocean_model_z_new", "age_adx", "age_adx", "ocean_model_z_new_age_adx", "all",.false., "none", 2
+"ocean_model_z_new", "age_ady", "age_ady", "ocean_model_z_new_age_ady", "all",.false., "none", 2
+"ocean_model_z_new", "age_dfx", "age_dfx", "ocean_model_z_new_age_dfx", "all",.false., "none", 2
+"ocean_model_z_new", "age_dfy", "age_dfy", "ocean_model_z_new_age_dfy", "all",.false., "none", 2
+"ocean_model_z_new", "dKE_dt", "dKE_dt", "ocean_model_z_new_dKE_dt", "all",.false., "none", 2
+"ocean_model_z_new", "dhdt", "dhdt", "ocean_model_z_new_dhdt", "all",.false., "none", 2
+"ocean_model_z_new", "diffu", "diffu", "ocean_model_z_new_diffu", "all",.false., "none", 2
+"ocean_model_z_new", "diffv", "diffv", "ocean_model_z_new_diffv", "all",.false., "none", 2
+"ocean_model_z_new", "difmxybo", "difmxybo", "ocean_model_z_new_difmxybo", "all",.false., "none", 2
+"ocean_model_z_new", "difmxylo", "difmxylo", "ocean_model_z_new_difmxylo", "all",.false., "none", 2
+"ocean_model_z_new", "diftrblo", "diftrblo", "ocean_model_z_new_diftrblo", "all",.false., "none", 2
+"ocean_model_z_new", "du_dt_visc", "du_dt_visc", "ocean_model_z_new_du_dt_visc", "all",.false., "none", 2
+"ocean_model_z_new", "dudt", "dudt", "ocean_model_z_new_dudt", "all",.false., "none", 2
+"ocean_model_z_new", "dudt_dia", "dudt_dia", "ocean_model_z_new_dudt_dia", "all",.false., "none", 2
+"ocean_model_z_new", "dv_dt_visc", "dv_dt_visc", "ocean_model_z_new_dv_dt_visc", "all",.false., "none", 2
+"ocean_model_z_new", "dvdt", "dvdt", "ocean_model_z_new_dvdt", "all",.false., "none", 2
+"ocean_model_z_new", "dvdt_dia", "dvdt_dia", "ocean_model_z_new_dvdt_dia", "all",.false., "none", 2
+"ocean_model_z_new", "ea", "ea", "ocean_model_z_new_ea", "all",.false., "none", 2
+"ocean_model_z_new", "eb", "eb", "ocean_model_z_new_eb", "all",.false., "none", 2
+"ocean_model_z_new", "frazil_heat_tendency", "frazil_heat_tendency", "ocean_model_z_new_frazil_heat_tendency", "all",.false., "none", 2
+"ocean_model_z_new", "frazil_temp_tendency", "frazil_temp_tendency", "ocean_model_z_new_frazil_temp_tendency", "all",.false., "none", 2
+"ocean_model_z_new", "frhatu", "frhatu", "ocean_model_z_new_frhatu", "all",.false., "none", 2
+"ocean_model_z_new", "frhatu1", "frhatu1", "ocean_model_z_new_frhatu1", "all",.false., "none", 2
+"ocean_model_z_new", "frhatv", "frhatv", "ocean_model_z_new_frhatv", "all",.false., "none", 2
+"ocean_model_z_new", "frhatv1", "frhatv1", "ocean_model_z_new_frhatv1", "all",.false., "none", 2
+"ocean_model_z_new", "gKEu", "gKEu", "ocean_model_z_new_gKEu", "all",.false., "none", 2
+"ocean_model_z_new", "gKEv", "gKEv", "ocean_model_z_new_gKEv", "all",.false., "none", 2
+"ocean_model_z_new", "h", "h", "ocean_model_z_new_h", "all",.false., "none", 2
+"ocean_model_z_new", "h_predia", "h_predia", "ocean_model_z_new_h_predia", "all",.false., "none", 2
+"ocean_model_z_new", "h_rho", "h_rho", "ocean_model_z_new_h_rho", "all",.false., "none", 2
+"ocean_model_z_new", "masscello", "masscello", "ocean_model_z_new_masscello", "all",.false., "none", 2
+"ocean_model_z_new", "maxTKE", "maxTKE", "ocean_model_z_new_maxTKE", "all",.false., "none", 2
+"ocean_model_z_new", "opac_1", "opac_1", "ocean_model_z_new_opac_1", "all",.false., "none", 2
+"ocean_model_z_new", "opac_2", "opac_2", "ocean_model_z_new_opac_2", "all",.false., "none", 2
+"ocean_model_z_new", "opac_3", "opac_3", "ocean_model_z_new_opac_3", "all",.false., "none", 2
+"ocean_model_z_new", "opottemptend", "opottemptend", "ocean_model_z_new_opottemptend", "all",.false., "none", 2
+"ocean_model_z_new", "osalttend", "osalttend", "ocean_model_z_new_osalttend", "all",.false., "none", 2
+"ocean_model_z_new", "rhoinsitu", "rhoinsitu", "ocean_model_z_new_rhoinsitu", "all",.false., "none", 2
+"ocean_model_z_new", "rhopot0", "rhopot0", "ocean_model_z_new_rhopot0", "all",.false., "none", 2
+"ocean_model_z_new", "rhopot2", "rhopot2", "ocean_model_z_new_rhopot2", "all",.false., "none", 2
+"ocean_model_z_new", "rvxu", "rvxu", "ocean_model_z_new_rvxu", "all",.false., "none", 2
+"ocean_model_z_new", "rvxv", "rvxv", "ocean_model_z_new_rvxv", "all",.false., "none", 2
+"ocean_model_z_new", "salt", "salt", "ocean_model_z_new_salt", "all",.false., "none", 2
+"ocean_model_z_new", "salt_predia", "salt_predia", "ocean_model_z_new_salt_predia", "all",.false., "none", 2
+"ocean_model_z_new", "so", "so", "ocean_model_z_new_so", "all",.false., "none", 2
+"ocean_model_z_new", "temp", "temp", "ocean_model_z_new_temp", "all",.false., "none", 2
+"ocean_model_z_new", "temp_predia", "temp_predia", "ocean_model_z_new_temp_predia", "all",.false., "none", 2
+"ocean_model_z_new", "thetao", "thetao", "ocean_model_z_new_thetao", "all",.false., "none", 2
+"ocean_model_z_new", "thkcello", "thkcello", "ocean_model_z_new_thkcello", "all",.false., "none", 2
+"ocean_model_z_new", "u", "u", "ocean_model_z_new_u", "all",.false., "none", 2
+"ocean_model_z_new", "u_BT_accel", "u_BT_accel", "ocean_model_z_new_u_BT_accel", "all",.false., "none", 2
+"ocean_model_z_new", "u_predia", "u_predia", "ocean_model_z_new_u_predia", "all",.false., "none", 2
+"ocean_model_z_new", "uav", "uav", "ocean_model_z_new_uav", "all",.false., "none", 2
+"ocean_model_z_new", "uh", "uh", "ocean_model_z_new_uh", "all",.false., "none", 2
+"ocean_model_z_new", "uhGM", "uhGM", "ocean_model_z_new_uhGM", "all",.false., "none", 2
+"ocean_model_z_new", "uhGM_rho", "uhGM_rho", "ocean_model_z_new_uhGM_rho", "all",.false., "none", 2
+"ocean_model_z_new", "uh_rho", "uh_rho", "ocean_model_z_new_uh_rho", "all",.false., "none", 2
+"ocean_model_z_new", "uhml", "uhml", "ocean_model_z_new_uhml", "all",.false., "none", 2
+"ocean_model_z_new", "umo", "umo", "ocean_model_z_new_umo", "all",.false., "none", 2
+"ocean_model_z_new", "uo", "uo", "ocean_model_z_new_uo", "all",.false., "none", 2
+"ocean_model_z_new", "v", "v", "ocean_model_z_new_v", "all",.false., "none", 2
+"ocean_model_z_new", "v_BT_accel", "v_BT_accel", "ocean_model_z_new_v_BT_accel", "all",.false., "none", 2
+"ocean_model_z_new", "v_predia", "v_predia", "ocean_model_z_new_v_predia", "all",.false., "none", 2
+"ocean_model_z_new", "vav", "vav", "ocean_model_z_new_vav", "all",.false., "none", 2
+"ocean_model_z_new", "vh", "vh", "ocean_model_z_new_vh", "all",.false., "none", 2
+"ocean_model_z_new", "vhGM", "vhGM", "ocean_model_z_new_vhGM", "all",.false., "none", 2
+"ocean_model_z_new", "vhGM_rho", "vhGM_rho", "ocean_model_z_new_vhGM_rho", "all",.false., "none", 2
+"ocean_model_z_new", "vh_rho", "vh_rho", "ocean_model_z_new_vh_rho", "all",.false., "none", 2
+"ocean_model_z_new", "vhml", "vhml", "ocean_model_z_new_vhml", "all",.false., "none", 2
+"ocean_model_z_new", "visc_rem_u", "visc_rem_u", "ocean_model_z_new_visc_rem_u", "all",.false., "none", 2
+"ocean_model_z_new", "visc_rem_v", "visc_rem_v", "ocean_model_z_new_visc_rem_v", "all",.false., "none", 2
+"ocean_model_z_new", "vmo", "vmo", "ocean_model_z_new_vmo", "all",.false., "none", 2
+"ocean_model_z_new", "vo", "vo", "ocean_model_z_new_vo", "all",.false., "none", 2
+"ocean_model_z", "salt", "salt", "ocean_model_z_salt", "all",.false., "none", 2
+"ocean_model_z", "salt_xyave", "salt_xyave", "ocean_model_z_salt_xyave", "all",.false., "none", 2
+"ocean_model_z", "so", "so", "ocean_model_z_so", "all",.false., "none", 2
+"ocean_model_z", "so_xyave", "so_xyave", "ocean_model_z_so_xyave", "all",.false., "none", 2
+"ocean_model_z", "temp", "temp", "ocean_model_z_temp", "all",.false., "none", 2
+"ocean_model_z", "temp_xyave", "temp_xyave", "ocean_model_z_temp_xyave", "all",.false., "none", 2
+"ocean_model_z", "thetao", "thetao", "ocean_model_z_thetao", "all",.false., "none", 2
+"ocean_model_z", "thetao_xyave", "thetao_xyave", "ocean_model_z_thetao_xyave", "all",.false., "none", 2
+"ocean_model_z", "u", "u", "ocean_model_z_u", "all",.false., "none", 2
+"ocean_model_z", "uh", "uh", "ocean_model_z_uh", "all",.false., "none", 2
+"ocean_model_z", "uo", "uo", "ocean_model_z_uo", "all",.false., "none", 2
+"ocean_model_z", "v", "v", "ocean_model_z_v", "all",.false., "none", 2
+"ocean_model_z", "vh", "vh", "ocean_model_z_vh", "all",.false., "none", 2
+"ocean_model_z", "vo", "vo", "ocean_model_z_vo", "all",.false., "none", 2
+"ocean_model", "zos", "zos", "ocean_model_zos", "all",.false., "none", 2
+"ocean_model", "zossq", "zossq", "ocean_model_zossq", "all",.false., "none", 2
