@@ -51,8 +51,11 @@ class Model:
         self.site = 'raijin'
 
     def build(self, compiler, build, memory_type):
-        self.build_shared(compiler, build)
-        self.build_model(compiler, build, memory_type)
+        sret, shared_dir = self.build_shared(compiler, build)
+        mret, model_dir = self.build_model(compiler, build, memory_type)
+        exe = os.path.join(model_dir, 'MOM6') 
+
+        return sret + mret, exe
 
     def build_shared(self, compiler, build):
         saved_path = os.getcwd()
@@ -75,7 +78,7 @@ class Model:
         with open(os.path.join(shared_dir, 'build.out'), 'w') as f:
             f.write(output)
 
-        return ret
+        return ret, shared_dir
 
 
     def build_model(self, compiler='gnu', build='REPRO', memory_type='dynamic'):
@@ -113,4 +116,5 @@ class Model:
         with open(os.path.join(model_dir, 'build.out'), 'w') as f:
             f.write(output)
 
-        return ret
+        return ret, model_dir
+

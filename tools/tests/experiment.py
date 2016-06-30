@@ -92,10 +92,7 @@ class Experiment:
         if self.variation is not None:
             self.path = os.path.join(self.path, self.variation)
 
-        # Path to executable, may not exist yet.
-        rel_path = 'build/{}/{}/{}/MOM6'.format(self.compiler,
-                                                self.model_name, build)
-        self.exec_path = os.path.join(_mom_examples_path, rel_path)
+        self.exec_path = None
 
         # Lists of available and unfinished diagnostics.
         self.available_diags = self._parse_available_diags()
@@ -108,9 +105,8 @@ class Experiment:
         # It helps with testing and human readability if this is sorted.
         self.available_diags.sort(key=lambda d: d.full_name)
 
-        # Whether this experiment has been built, run. Want to try to avoid
+        # Whether this experiment has been run. Want to try to avoid
         # repeating this if possible.
-        self.has_built = False
         self.has_run = False
         # Another thing to avoid repeating.
         self.has_dumped_diags = False
@@ -136,33 +132,22 @@ class Experiment:
                 diags.extend([Diagnostic(m, d, self.path) for m, d in matches])
         return diags
 
-    def force_build_model(self):
-        """
-        Do a clean build of the configuration.
-        """
-
-        ret = self.model.build_shared(self.compiler, self.build)
-        if ret == 0:
-            ret = self.model.build_model(self.compiler, self.build,
-                                         self.memory_type)
-        if ret == 0:
-            self.has_built = True
-
-        return ret
-
     def build_model(self):
         """
         Build the configuration for this experiment.
         """
-        if not self.has_built:
-            return self.force_build_model()
+
+        if not self.exec_path:
+            ret, exe = self.model.build(self.compiler, self.build,
+                                     self.memory_type)
+            assert(ret == 0)
+            self.exec_path = exe
 
     def run(self):
         """
         Run the experiment if it hasn't already.
         """
 
-        self.build_model()
         if not self.has_run:
             return self.force_run()
 
@@ -171,6 +156,7 @@ class Experiment:
         Run the experiment.
         """
 
+        self.build_model()
         assert(os.path.exists(self.exec_path))
 
         ret = 0
