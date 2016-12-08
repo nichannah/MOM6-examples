@@ -1,6 +1,11 @@
 ! This file was written by the model and records the non-default parameters used at run-time.
 
 ! === module MOM ===
+VERBOSITY = 9                   ! default = 2
+                                ! Integer controlling level of messaging
+                                !   0 = Only FATAL messages
+                                !   2 = Only FATAL, WARNING, NOTE [default]
+                                !   9 = All)
 ENABLE_THERMODYNAMICS = False   !   [Boolean] default = True
                                 ! If true, Temperature and salinity are used as state
                                 ! variables.
@@ -9,6 +14,8 @@ ADIABATIC = True                !   [Boolean] default = False
                                 ! true. This assumes that KD = KDML = 0.0 and that
                                 ! there is no buoyancy forcing, but makes the model
                                 ! faster by eliminating subroutine calls.
+DEBUG = True                    !   [Boolean] default = False
+                                ! If true, write out verbose debugging data.
 DT = 1200.0                     !   [s]
                                 ! The (baroclinic) dynamics time step.  The time-step that
                                 ! is actually used will be an integer fraction of the
@@ -36,10 +43,14 @@ NIGLOBAL = 44                   !
                                 ! The total number of thickness grid points in the
                                 ! x-direction in the physical domain. With STATIC_MEMORY_
                                 ! this is set in MOM_memory.h at compile time.
-NJGLOBAL = 40                   !
+NJGLOBAL = 44                   !
                                 ! The total number of thickness grid points in the
                                 ! y-direction in the physical domain. With STATIC_MEMORY_
                                 ! this is set in MOM_memory.h at compile time.
+APPLY_SYMMETRIC_INPUT_TRANSFORM = True !   [Boolean] default = False
+                                ! Whether or not to apply a symmetric transformation to all
+                                ! model inputs. This is a testing feature that can be
+                                ! used to help find horizontal indexing errors.
 
 ! === module MOM_hor_index ===
 ! Sets the horizontal array index types.
